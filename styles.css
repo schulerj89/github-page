@@ -62,7 +62,7 @@ body {
 [data-theme="light"] .icon.moon { display: block; }
 
 /* Hero */
-.hero { text-align: center; padding-top: 120px; }
+.hero { text-align: center; padding-top: 120px; padding-bottom: 0; }
 .hero .kicker { color: var(--muted); letter-spacing: .25em; text-transform: uppercase; font-size: 13px; margin: 0 0 8px; }
 .hero h1 { font-size: clamp(40px, 7vw, 80px); line-height: 1; margin: 0 0 14px; }
 .gradient-text { background: linear-gradient(135deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
