@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Josh Schuler • @schulerj89</title>
+    <meta name="description" content="Personal website of Josh Schuler (@schulerj89). Projects, contact, and more." />
+    <meta name="theme-color" content="#0ea5e9" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="bg" aria-hidden="true"></canvas>
+
+    <header class="site-header glass">
+      <a class="logo" href="#top" aria-label="Home">
+        <span class="logo-hex" aria-hidden="true">JS</span>
+      </a>
+      <nav class="site-nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle color theme">
+          <svg class="icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M4 12H2m20 0h-2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"></path>
+          </svg>
+          <svg class="icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z"></path>
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <main id="top" class="main">
+      <section class="hero section">
+        <div class="container hero-inner">
+          <h1 class="gradient-text wave">Josh Schuler</h1>
+          <p class="subtitle">@schulerj89 • Developer & Builder</p>
+          <div class="cta">
+            <a class="btn primary" href="https://github.com/schulerj89" target="_blank" rel="noopener">View GitHub</a>
+            <a class="btn" href="#projects">See Projects</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section container reveal">
+        <h2>About</h2>
+        <p>
+          I’m Josh Schuler (<strong>@schulerj89</strong>). I'm a passionate Software Engineer with over 13 years of experience! 🚀
+          👨🏾‍💻 I thrive on coding, problem-solving, and staying at the cutting edge of technology.
+          💼 Throughout my career, I've built a diverse skill set across multiple domains and technologies.
+          🤝🏾 I'm always open to collaborating on exciting projects and innovative ideas.
+        </p>
+        <ul class="pill-list">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>TypeScript</li>
+          <li>Node</li>
+          <li>APIs</li>
+        </ul>
+      </section>
+
+      <section id="projects" class="section container reveal">
+        <h2>Projects</h2>
+        <p class="subtitle">Open source contributions to Laravel</p>
+        <div class="grid">
+          <article class="card tilt">
+            <div class="card-head">
+              <span class="badge">Docs</span>
+              <h3>Laravel Docs — PR #8123</h3>
+            </div>
+            <p>Contribution to the Laravel documentation.</p>
+            <div class="card-meta">
+              <span class="pill">Laravel</span>
+              <span class="pill">Docs</span>
+              <span class="pill">Open Source</span>
+            </div>
+            <div class="card-actions">
+              <a class="text-link" href="https://github.com/laravel/docs/pull/8123" target="_blank" rel="noopener">View Pull Request →</a>
+            </div>
+          </article>
+
+          <article class="card tilt">
+            <div class="card-head">
+              <span class="badge">Docs</span>
+              <h3>Laravel Docs — PR #8113</h3>
+            </div>
+            <p>Documentation improvement to laravel/docs.</p>
+            <div class="card-meta">
+              <span class="pill">Laravel</span>
+              <span class="pill">Docs</span>
+              <span class="pill">Open Source</span>
+            </div>
+            <div class="card-actions">
+              <a class="text-link" href="https://github.com/laravel/docs/pull/8113" target="_blank" rel="noopener">View Pull Request →</a>
+            </div>
+          </article>
+
+          <article class="card tilt">
+            <div class="card-head">
+              <span class="badge">Framework</span>
+              <h3>Laravel Framework — PR #43639</h3>
+            </div>
+            <p>Code contribution to the laravel/framework repository.</p>
+            <div class="card-meta">
+              <span class="pill">Laravel</span>
+              <span class="pill">Framework</span>
+              <span class="pill">PHP</span>
+            </div>
+            <div class="card-actions">
+              <a class="text-link" href="https://github.com/laravel/framework/pull/43639" target="_blank" rel="noopener">View Pull Request →</a>
+            </div>
+          </article>
+
+          <article class="card tilt">
+            <div class="card-head">
+              <span class="badge">Framework</span>
+              <h3>Laravel Framework — PR #43841</h3>
+            </div>
+            <p>Additional contribution to laravel/framework.</p>
+            <div class="card-meta">
+              <span class="pill">Laravel</span>
+              <span class="pill">Framework</span>
+              <span class="pill">PHP</span>
+            </div>
+            <div class="card-actions">
+              <a class="text-link" href="https://github.com/laravel/framework/pull/43841" target="_blank" rel="noopener">View Pull Request →</a>
+            </div>
+          </article>
+        </div>
+
+        <details class="collapsible">
+          <summary>
+            More contributions
+            <svg class="toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="grid">
+            <article class="card tilt">
+              <div class="card-head">
+                <span class="badge">Framework</span>
+                <h3>Laravel Framework — PR #53009</h3>
+              </div>
+              <p>Contribution to laravel/framework.</p>
+              <div class="card-meta">
+                <span class="pill">Laravel</span>
+                <span class="pill">Framework</span>
+                <span class="pill">PHP</span>
+              </div>
+              <div class="card-actions">
+                <a class="text-link" href="https://github.com/laravel/framework/pull/53009" target="_blank" rel="noopener">View Pull Request →</a>
+              </div>
+            </article>
+
+            <article class="card tilt">
+              <div class="card-head">
+                <span class="badge">Framework</span>
+                <h3>Laravel Framework — PR #53054</h3>
+              </div>
+              <p>Contribution to laravel/framework.</p>
+              <div class="card-meta">
+                <span class="pill">Laravel</span>
+                <span class="pill">Framework</span>
+                <span class="pill">PHP</span>
+              </div>
+              <div class="card-actions">
+                <a class="text-link" href="https://github.com/laravel/framework/pull/53054" target="_blank" rel="noopener">View Pull Request →</a>
+              </div>
+            </article>
+
+            <article class="card tilt">
+              <div class="card-head">
+                <span class="badge">Framework</span>
+                <h3>Laravel Framework — PR #53097</h3>
+              </div>
+              <p>Contribution to laravel/framework.</p>
+              <div class="card-meta">
+                <span class="pill">Laravel</span>
+                <span class="pill">Framework</span>
+                <span class="pill">PHP</span>
+              </div>
+              <div class="card-actions">
+                <a class="text-link" href="https://github.com/laravel/framework/pull/53097" target="_blank" rel="noopener">View Pull Request →</a>
+              </div>
+            </article>
+
+            <article class="card tilt">
+              <div class="card-head">
+                <span class="badge">Framework</span>
+                <h3>Laravel Framework — PR #53109</h3>
+              </div>
+              <p>Contribution to laravel/framework.</p>
+              <div class="card-meta">
+                <span class="pill">Laravel</span>
+                <span class="pill">Framework</span>
+                <span class="pill">PHP</span>
+              </div>
+              <div class="card-actions">
+                <a class="text-link" href="https://github.com/laravel/framework/pull/53109" target="_blank" rel="noopener">View Pull Request →</a>
+              </div>
+            </article>
+          </div>
+        </details>
+      </section>
+
+      <section id="contact" class="section container reveal">
+        <h2>Contact</h2>
+        <div class="grid contact-grid">
+          <a class="card" href="https://github.com/schulerj89" target="_blank" rel="noopener">
+            <div class="card-head"><h3>GitHub</h3></div>
+            <p>Follow and star projects on GitHub.</p>
+          </a>
+          <a class="card" href="https://www.linkedin.com/in/josh-schuler" target="_blank" rel="noopener">
+            <div class="card-head"><h3>LinkedIn</h3></div>
+            <p>Connect professionally on LinkedIn.</p>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Josh Schuler</span>
+        <a class="text-link" href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
