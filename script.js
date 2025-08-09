@@ -12,6 +12,24 @@
   });
 })();
 
+// Mobile menu toggle
+(function mobileMenu(){
+  const btn = document.getElementById('menuToggle');
+  const nav = document.querySelector('.site-nav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  nav.addEventListener('click', (e) => {
+    const t = e.target;
+    if (t instanceof HTMLElement && t.tagName === 'A' && nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+
 // Current year
 (function year(){
   const y = document.getElementById('year');
@@ -28,9 +46,9 @@
   els.forEach(el => io.observe(el));
 })();
 
-// Subtle tilt effect for cards
+// Subtle tilt effect for cards (disabled on touch/non-fine pointers)
 (function tilt(){
-  const clamps = (v, min, max) => Math.max(min, Math.min(max, v));
+  if (!window.matchMedia || !window.matchMedia('(pointer: fine)').matches) return;
   const cards = document.querySelectorAll('.tilt');
   cards.forEach(card => {
     let raf = 0;
@@ -66,7 +84,9 @@
   }
 
   function makeParticles(){
-    const count = Math.round((w * h) / 26000); // density
+    const base = (w * h) / 26000;
+    const density = window.innerWidth <= 480 ? base * 0.6 : base;
+    const count = Math.round(density);
     particles = Array.from({ length: count }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
