@@ -153,6 +153,18 @@ body {
 .collapsible[open] .toggle-icon { transform: rotate(180deg); }
 .collapsible > .grid { margin-top: 14px; }
 
+/* AI section accent */
+#ai { position: relative; }
+#ai::before {
+  content: "";
+  position: absolute; inset: 0; border-radius: 24px; z-index: -1;
+  background: linear-gradient(135deg, rgba(14,165,233,0.18), rgba(34,211,238,0.10));
+  opacity: .55; filter: blur(4px);
+}
+@media (max-width: 480px) {
+  #ai::before { border-radius: 18px; }
+}
+
 /* Wave hero name animation */
 .wave { white-space: nowrap; }
 .wave .char { display: inline-block; will-change: transform; animation: waveY 2.4s ease-in-out infinite; animation-delay: calc(var(--i) * 0.08s); }
