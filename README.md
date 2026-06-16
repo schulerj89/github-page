@@ -1,39 +1,30 @@
-# Josh Schuler • @schulerj89
+# Josh Schuler Portfolio
 
-A lightweight, modern GitHub Pages site built with plain HTML/CSS/JS. Includes:
+Static GitHub Pages portfolio for Josh Schuler (`@schulerj89`).
 
-- Particle background canvas
-- Glassmorphism cards and sticky header
-- Dark/Light theme toggle with persistence
-- Subtle 3D tilt cards and scroll reveal
+## What Is Included
 
-## Local preview
+- Responsive developer portfolio built with plain HTML, CSS, and JavaScript.
+- Featured Shadow Circuit / sneak-game project links:
+  - GitHub: https://github.com/schulerj89/sneak-game
+  - Live: https://schulerj89.github.io/sneak-game/
+- Project filters, mobile navigation, theme persistence, and an interactive signal canvas.
+- Version notes in `CHANGELOG.md`.
+- Screenshot artifacts in `artifacts/`.
+- Project-local Codex skill in `.codex/skills/interactive-dev-site-expert`.
 
-You can just open `index.html` directly in a browser, or serve with a simple static server.
+## Local Preview
 
-### Python (if installed)
-- Python 3: `python -m http.server 8080`
-- Python 2: `python -m SimpleHTTPServer 8080`
+```powershell
+python -m http.server 8080
+```
 
-Then go to http://localhost:8080
+Then open:
 
-## Deploy to GitHub Pages
+```text
+http://127.0.0.1:8080/
+```
 
-Option A — User/Org site (recommended):
-1. Name this repository exactly `schulerj89.github.io`.
-2. Push `index.html`, `styles.css`, and `script.js` to the `main` branch.
-3. Pages will be live at https://schulerj89.github.io
+## Deploy
 
-Option B — Project site (this repo name can be anything):
-1. Push to GitHub.
-2. In GitHub Settings → Pages, set Source to `Deploy from a branch`, pick `main` and `/ (root)`.
-3. The site will be at `https://schulerj89.github.io/<repo-name>`.
-
-## Customize
-- Edit social links in `index.html` (About, Projects, Contact).
-- Replace placeholder projects.
-- Update email and LinkedIn URLs.
-- Drop a `resume.pdf` in the repo root if you want the Resume link to work.
-
-## License
-MIT
+This is a static GitHub Pages site. Push `index.html`, `styles.css`, `script.js`, and supporting docs to the configured Pages branch.

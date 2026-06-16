@@ -1,0 +1,4 @@
+interface:
+  display_name: "Interactive Dev Site Expert"
+  short_description: "Build polished mobile-first developer sites"
+  default_prompt: "Use $interactive-dev-site-expert to revamp a developer portfolio with responsive interactive project sections."

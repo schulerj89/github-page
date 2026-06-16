@@ -1,286 +1,378 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Josh Schuler • @schulerj89</title>
-    <meta name="description" content="Personal website of Josh Schuler (@schulerj89). Projects, contact, and more." />
-    <meta name="theme-color" content="#0ea5e9" />
+    <title>Josh Schuler | Software Engineering Manager</title>
+    <meta
+      name="description"
+      content="Developer portfolio for Josh Schuler: engineering leadership, AI-assisted development, web projects, open source contributions, and Shadow Circuit."
+    />
+    <meta name="theme-color" content="#080a0d" />
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <canvas id="bg" aria-hidden="true"></canvas>
+    <canvas id="signalCanvas" aria-hidden="true"></canvas>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header glass">
-      <a class="logo" href="#top" aria-label="Home">
-        <span class="logo-hex" aria-hidden="true">JS</span>
+    <header class="site-header" data-elevated="false">
+      <a class="brand" href="#top" aria-label="Josh Schuler home">
+        <span class="brand-mark">JS</span>
+        <span class="brand-copy">
+          <strong>Josh Schuler</strong>
+          <span>@schulerj89</span>
+        </span>
       </a>
-      <nav class="site-nav">
-        <button id="menuToggle" class="icon-btn menu-btn" aria-label="Toggle menu" aria-expanded="false">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-        <a href="#about">About</a>
+
+      <nav id="siteNav" class="site-nav" aria-label="Primary navigation">
+        <a href="#shadow-circuit">Sneak Game</a>
         <a href="#projects">Projects</a>
-  <a href="#ai">AI</a>
+        <a href="#about">About</a>
         <a href="#contact">Contact</a>
-        <button id="themeToggle" class="icon-btn" aria-label="Toggle color theme">
-          <svg class="icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2m0 16v2M4 12H2m20 0h-2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"></path>
-          </svg>
-          <svg class="icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z"></path>
-          </svg>
-        </button>
       </nav>
+
+      <div class="header-actions">
+        <button id="themeToggle" class="icon-button" type="button" aria-label="Toggle color theme">
+          <span class="theme-glyph" aria-hidden="true">01</span>
+        </button>
+        <button
+          id="menuToggle"
+          class="menu-button"
+          type="button"
+          aria-controls="siteNav"
+          aria-expanded="false"
+        >
+          Menu
+        </button>
+      </div>
     </header>
 
-    <main id="top" class="main">
-      <section class="hero section">
-        <div class="container hero-inner">
-          <h1 class="gradient-text wave">Josh Schuler</h1>
-          <p class="subtitle">@schulerj89 • Software Engineering Manager</p>
-          <div class="cta">
-            <a class="btn primary" href="https://github.com/schulerj89" target="_blank" rel="noopener">View GitHub</a>
-            <a class="btn" href="#projects">See Projects</a>
+    <main id="main">
+      <section id="top" class="hero section-shell">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Engineering manager / practical AI builder / systems thinker</p>
+          <h1>Building useful software with strong product instincts.</h1>
+          <p class="hero-lede">
+            I am Josh Schuler, a software engineering manager who ships production systems,
+            explores AI-assisted development, and keeps a hands-on builder streak through web
+            apps, games, and open source work.
+          </p>
+          <div class="hero-actions" aria-label="Primary links">
+            <a class="button primary" href="https://github.com/schulerj89" target="_blank" rel="noopener">
+              GitHub
+            </a>
+            <a class="button" href="#shadow-circuit">Featured Game</a>
+            <a class="button subtle" href="#projects">Project Board</a>
+          </div>
+        </div>
+
+        <aside class="hero-console interactive-surface reveal" aria-label="Current focus">
+          <div class="console-topbar" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <p class="console-label">Current build</p>
+          <h2>Shadow Circuit</h2>
+          <p>
+            A Three.js stealth prototype where you sneak through dark rooms, read guard cones,
+            collect objectives, and clear twelve levels.
+          </p>
+          <dl class="console-metrics">
+            <div>
+              <dt>Stack</dt>
+              <dd>TypeScript + Three.js</dd>
+            </div>
+            <div>
+              <dt>Levels</dt>
+              <dd>12</dd>
+            </div>
+            <div>
+              <dt>Deploy</dt>
+              <dd>GitHub Pages</dd>
+            </div>
+          </dl>
+          <div class="console-actions">
+            <a href="https://github.com/schulerj89/sneak-game" target="_blank" rel="noopener">Repo</a>
+            <a href="https://schulerj89.github.io/sneak-game/" target="_blank" rel="noopener">Live</a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="signal-strip" aria-label="Portfolio highlights">
+        <div>
+          <strong>13+</strong>
+          <span>years shipping software</span>
+        </div>
+        <div>
+          <strong>AI</strong>
+          <span>reviewed, tested, and owned</span>
+        </div>
+        <div>
+          <strong>OSS</strong>
+          <span>Laravel docs and framework PRs</span>
+        </div>
+        <div>
+          <strong>Games</strong>
+          <span>browser prototypes with real play loops</span>
+        </div>
+      </section>
+
+      <section id="shadow-circuit" class="section-band feature-band">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Featured project</p>
+          <h2>Shadow Circuit, the sneak game.</h2>
+          <p>
+            The repo is named <strong>sneak-game</strong>, and the game is a dark sci-fi stealth
+            prototype built around readable patrols, objective gates, mobile controls, and fast
+            iteration.
+          </p>
+        </div>
+
+        <div class="feature-layout">
+          <article class="feature-copy interactive-surface reveal">
+            <div class="project-badges">
+              <span>Game</span>
+              <span>Three.js</span>
+              <span>TypeScript</span>
+              <span>GitHub Pages</span>
+            </div>
+            <h3>Built like a portfolio piece, tested like a product.</h3>
+            <p>
+              Shadow Circuit includes level validation, browser smoke tests, mobile joystick
+              checks, asset documentation, and screenshot scripts. It is the kind of side project
+              that shows engineering taste beyond a static demo.
+            </p>
+            <div class="action-row">
+              <a class="button primary" href="https://github.com/schulerj89/sneak-game" target="_blank" rel="noopener">
+                Sneak Game GitHub
+              </a>
+              <a class="button" href="https://schulerj89.github.io/sneak-game/" target="_blank" rel="noopener">
+                Play Live
+              </a>
+            </div>
+          </article>
+
+          <div class="game-visual reveal" aria-label="Stylized Shadow Circuit level preview">
+            <div class="map-toolbar">
+              <span>sector-09</span>
+              <span>stealth route</span>
+            </div>
+            <div class="map-grid" aria-hidden="true">
+              <span class="wall a"></span>
+              <span class="wall b"></span>
+              <span class="wall c"></span>
+              <span class="objective key"></span>
+              <span class="objective terminal"></span>
+              <span class="guard g1"></span>
+              <span class="guard g2"></span>
+              <span class="cone c1"></span>
+              <span class="cone c2"></span>
+              <span class="player"></span>
+              <span class="route r1"></span>
+              <span class="route r2"></span>
+              <span class="exit"></span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="about" class="section container reveal">
-        <h2>About</h2>
-        <p>I’m <strong>Josh Schuler</strong>, a software engineering manager with 13+ years of shipping production software and a growing obsession with practical, ethical AI augmentation.</p>
-        <ul class="about-points">
-          <li><strong>Builder mindset:</strong> I enjoy turning fuzzy ideas into resilient, maintainable systems.</li>
-            <li><strong>Hands-on with AI:</strong> I actively experiment with Codex, Claude & other copilots to accelerate ideation, reviews, and refactors—always validating the output.</li>
-          <li><strong>End‑to‑end experience:</strong> From frontend polish to backend APIs & infrastructure decisions.</li>
-          <li><strong>Performance & DX:</strong> I care about fast pages, clean abstractions, and happy developers.</li>
-          <li><strong>Open source:</strong> Ongoing contributor (notably in the Laravel ecosystem).</li>
-          <li><strong>Always learning:</strong> I love exploring emerging patterns in web, tooling, and AI safety/guardrails.</li>
-        </ul>
-        <div class="skills-wrap" aria-label="Core stack">
-          <ul class="pill-list">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-            <li>Node</li>
-            <li>APIs</li>
-            <li>AI Assisted Dev</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="projects" class="section container reveal">
-        <h2>Projects</h2>
-        <p class="subtitle">Shipped web apps and selected open source work.</p>
-        <h3>Web Apps</h3>
-        <div class="grid">
-          <article class="card tilt">
-            <div class="card-head">
-              <span class="badge">Game</span>
-              <h3>Tic Tac Toe</h3>
-            </div>
-            <p>A polished browser Tic-Tac-Toe app with AI difficulty, match mode, persistent stats, and GitHub Pages deployment.</p>
-            <div class="card-meta">
-              <span class="pill">JavaScript</span>
-              <span class="pill">Vite</span>
-              <span class="pill">GitHub Pages</span>
-            </div>
-            <div class="card-actions">
-              <a class="text-link" href="https://schulerj89.github.io/tictactoe/" target="_blank" rel="noopener">Open Project -></a>
-            </div>
-          </article>
+      <section id="projects" class="section-band">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Selected work</p>
+          <h2>Project board</h2>
+          <p>
+            A focused set of games, web apps, AI experiments, and open source contributions. Use
+            the filters to scan by kind of work.
+          </p>
         </div>
 
-        <h3 style="margin-top: 28px;">Open Source Contributions</h3>
-        <p class="subtitle">Selected Laravel documentation and framework contributions.</p>
-        <div class="grid">
-          <article class="card tilt">
-            <div class="card-head">
-              <span class="badge">Docs</span>
-              <h3>Docs — PR #8123</h3>
+        <div class="project-toolbar reveal" role="group" aria-label="Filter projects">
+          <button class="filter-button is-active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="game">Games</button>
+          <button class="filter-button" type="button" data-filter="web">Web</button>
+          <button class="filter-button" type="button" data-filter="ai">AI</button>
+          <button class="filter-button" type="button" data-filter="oss">OSS</button>
+          <span id="projectCount" class="project-count" aria-live="polite"></span>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card interactive-surface reveal" data-category="game web">
+            <p class="card-kicker">Featured game</p>
+            <h3>Shadow Circuit</h3>
+            <p>
+              Three.js stealth game prototype with guard vision cones, objective-gated exits,
+              level validation, mobile controls, and a GitHub Pages deployment pipeline.
+            </p>
+            <div class="project-badges">
+              <span>Three.js</span>
+              <span>TypeScript</span>
+              <span>Vite</span>
             </div>
-            <p>Contribution to the Laravel documentation.</p>
-            <div class="card-meta">
-              <span class="pill">Laravel</span>
-              <span class="pill">Docs</span>
-              <span class="pill">Open Source</span>
-            </div>
-            <div class="card-actions">
-              <a class="text-link" href="https://github.com/laravel/docs/pull/8123" target="_blank" rel="noopener">View Pull Request →</a>
+            <div class="card-links">
+              <a href="https://github.com/schulerj89/sneak-game" target="_blank" rel="noopener">GitHub Repo</a>
+              <a href="https://schulerj89.github.io/sneak-game/" target="_blank" rel="noopener">Live Game</a>
             </div>
           </article>
 
-          <article class="card tilt">
-            <div class="card-head">
-              <span class="badge">Docs</span>
-              <h3>Docs — PR #8113</h3>
+          <article class="project-card interactive-surface reveal" data-category="game web">
+            <p class="card-kicker">Browser game</p>
+            <h3>Tic Tac Toe</h3>
+            <p>
+              Polished browser game with AI difficulty, match mode, persistent stats, and a
+              lightweight static deployment.
+            </p>
+            <div class="project-badges">
+              <span>JavaScript</span>
+              <span>Vite</span>
+              <span>GitHub Pages</span>
             </div>
-            <p>Documentation improvement to laravel/docs.</p>
-            <div class="card-meta">
-              <span class="pill">Laravel</span>
-              <span class="pill">Docs</span>
-              <span class="pill">Open Source</span>
-            </div>
-            <div class="card-actions">
-              <a class="text-link" href="https://github.com/laravel/docs/pull/8113" target="_blank" rel="noopener">View Pull Request →</a>
-            </div>
-          </article>
-
-          <article class="card tilt">
-            <div class="card-head">
-              <span class="badge">Framework</span>
-              <h3>Framework — PR #43639</h3>
-            </div>
-            <p>Code contribution to the laravel/framework repository.</p>
-            <div class="card-meta">
-              <span class="pill">Laravel</span>
-              <span class="pill">Framework</span>
-              <span class="pill">PHP</span>
-            </div>
-            <div class="card-actions">
-              <a class="text-link" href="https://github.com/laravel/framework/pull/43639" target="_blank" rel="noopener">View Pull Request →</a>
+            <div class="card-links">
+              <a href="https://schulerj89.github.io/tictactoe/" target="_blank" rel="noopener">Open Project</a>
             </div>
           </article>
 
-          <article class="card tilt">
-            <div class="card-head">
-              <span class="badge">Framework</span>
-              <h3>Framework — PR #43841</h3>
+          <article class="project-card interactive-surface reveal" data-category="web ai">
+            <p class="card-kicker">Portfolio system</p>
+            <h3>GitHub Pages Lab</h3>
+            <p>
+              This site: static, fast, responsive, versioned with a specialist skill, changelog,
+              and screenshot artifacts for each meaningful refresh.
+            </p>
+            <div class="project-badges">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
             </div>
-            <p>Additional contribution to laravel/framework.</p>
-            <div class="card-meta">
-              <span class="pill">Laravel</span>
-              <span class="pill">Framework</span>
-              <span class="pill">PHP</span>
+            <div class="card-links">
+              <a href="https://github.com/schulerj89/github-page" target="_blank" rel="noopener">GitHub Repo</a>
             </div>
-            <div class="card-actions">
-              <a class="text-link" href="https://github.com/laravel/framework/pull/43841" target="_blank" rel="noopener">View Pull Request →</a>
+          </article>
+
+          <article class="project-card interactive-surface reveal" data-category="oss">
+            <p class="card-kicker">Open source</p>
+            <h3>Laravel Contributions</h3>
+            <p>
+              Documentation and framework pull requests across Laravel projects, with a bias
+              toward clear developer experience and maintainable changes.
+            </p>
+            <div class="project-badges">
+              <span>Laravel</span>
+              <span>PHP</span>
+              <span>Docs</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/laravel/docs/pull/8123" target="_blank" rel="noopener">Docs PR 8123</a>
+              <a href="https://github.com/laravel/framework/pull/43639" target="_blank" rel="noopener">Framework PR</a>
             </div>
           </article>
         </div>
 
-        <details class="collapsible">
+        <details class="contribution-drawer reveal">
           <summary>
-            More contributions
-            <svg class="toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            More Laravel pull requests
+            <span aria-hidden="true">+</span>
           </summary>
-          <div class="grid">
-            <article class="card tilt">
-              <div class="card-head">
-                <span class="badge">Framework</span>
-                <h3>Framework — PR #53009</h3>
-              </div>
-              <p>Contribution to laravel/framework.</p>
-              <div class="card-meta">
-                <span class="pill">Laravel</span>
-                <span class="pill">Framework</span>
-                <span class="pill">PHP</span>
-              </div>
-              <div class="card-actions">
-                <a class="text-link" href="https://github.com/laravel/framework/pull/53009" target="_blank" rel="noopener">View Pull Request →</a>
-              </div>
-            </article>
-
-            <article class="card tilt">
-              <div class="card-head">
-                <span class="badge">Framework</span>
-                <h3>Framework — PR #53054</h3>
-              </div>
-              <p>Contribution to laravel/framework.</p>
-              <div class="card-meta">
-                <span class="pill">Laravel</span>
-                <span class="pill">Framework</span>
-                <span class="pill">PHP</span>
-              </div>
-              <div class="card-actions">
-                <a class="text-link" href="https://github.com/laravel/framework/pull/53054" target="_blank" rel="noopener">View Pull Request →</a>
-              </div>
-            </article>
-
-            <article class="card tilt">
-              <div class="card-head">
-                <span class="badge">Framework</span>
-                <h3>Framework — PR #53097</h3>
-              </div>
-              <p>Contribution to laravel/framework.</p>
-              <div class="card-meta">
-                <span class="pill">Laravel</span>
-                <span class="pill">Framework</span>
-                <span class="pill">PHP</span>
-              </div>
-              <div class="card-actions">
-                <a class="text-link" href="https://github.com/laravel/framework/pull/53097" target="_blank" rel="noopener">View Pull Request →</a>
-              </div>
-            </article>
-
-            <article class="card tilt">
-              <div class="card-head">
-                <span class="badge">Framework</span>
-                <h3>Framework — PR #53109</h3>
-              </div>
-              <p>Contribution to laravel/framework.</p>
-              <div class="card-meta">
-                <span class="pill">Laravel</span>
-                <span class="pill">Framework</span>
-                <span class="pill">PHP</span>
-              </div>
-              <div class="card-actions">
-                <a class="text-link" href="https://github.com/laravel/framework/pull/53109" target="_blank" rel="noopener">View Pull Request →</a>
-              </div>
-            </article>
+          <div class="link-list">
+            <a href="https://github.com/laravel/docs/pull/8113" target="_blank" rel="noopener">laravel/docs #8113</a>
+            <a href="https://github.com/laravel/framework/pull/43841" target="_blank" rel="noopener">laravel/framework #43841</a>
+            <a href="https://github.com/laravel/framework/pull/53009" target="_blank" rel="noopener">laravel/framework #53009</a>
+            <a href="https://github.com/laravel/framework/pull/53054" target="_blank" rel="noopener">laravel/framework #53054</a>
+            <a href="https://github.com/laravel/framework/pull/53097" target="_blank" rel="noopener">laravel/framework #53097</a>
+            <a href="https://github.com/laravel/framework/pull/53109" target="_blank" rel="noopener">laravel/framework #53109</a>
           </div>
         </details>
       </section>
 
-      <section id="ai" class="section container reveal">
-        <h2>AI & Build Notes</h2>
-        <p>
-          This site was crafted through a mix of human creativity and modern AI copilots.
-          I iterated the design & code while leveraging tools like Codex, Claude, and other AI assistants for
-          brainstorming, polish, and a few handy snippets. Every line was still reviewed, adapted, and owned by me.
-        </p>
-        <p class="subtitle" style="margin-top:18px;font-weight:600;">
-          "This was made by AI (and me)." 🤝
-        </p>
-        <ul class="pill-list" aria-label="AI tools & techniques used">
-          <li>Prompt-driven refactors</li>
-          <li>Testing checkpoints</li>
-          <li>Performance hints</li>
-          <li>Content drafting</li>
-        </ul>
+      <section id="about" class="section-band about-band">
+        <div class="section-heading reveal">
+          <p class="eyebrow">About</p>
+          <h2>Hands-on leadership with a builder's feedback loop.</h2>
+        </div>
+
+        <div class="about-layout">
+          <div class="about-copy reveal">
+            <p>
+              I have 13+ years of experience shipping production software and leading engineering
+              teams. I care about practical architecture, clean delivery, reliable systems, and
+              tools that make developers faster without hiding the need for judgment.
+            </p>
+            <p>
+              My AI work is intentionally grounded: use copilots for acceleration, then review,
+              test, and reshape the output until it is something I would maintain.
+            </p>
+          </div>
+
+          <ul class="principle-list reveal" aria-label="Working principles">
+            <li>
+              <strong>Turn ambiguity into plans.</strong>
+              <span>Break fuzzy ideas into scoped, testable increments.</span>
+            </li>
+            <li>
+              <strong>Keep the system legible.</strong>
+              <span>Prefer code and interfaces that future teammates can reason about.</span>
+            </li>
+            <li>
+              <strong>Validate the loop.</strong>
+              <span>Use tests, screenshots, logs, and real usage instead of vibes.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skill-cloud reveal" aria-label="Core stack and focus areas">
+          <span>TypeScript</span>
+          <span>JavaScript</span>
+          <span>Node</span>
+          <span>APIs</span>
+          <span>Frontend UX</span>
+          <span>AI-assisted development</span>
+          <span>Testing</span>
+          <span>Developer experience</span>
+          <span>Open source</span>
+        </div>
       </section>
 
-      <section id="contact" class="section container reveal">
-        <h2>Contact</h2>
-        <div class="grid contact-grid">
-          <a class="card" href="https://github.com/schulerj89" target="_blank" rel="noopener">
-            <div class="card-head"><h3>GitHub</h3></div>
-            <p>Follow and star projects on GitHub.</p>
+      <section id="ai" class="section-band ai-band">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Build notes</p>
+          <h2>AI is in the workflow, accountability stays human.</h2>
+          <p>
+            This portfolio is intentionally versioned with a local specialist skill, a changelog,
+            and screenshot artifacts. AI can help with ideation, code, and polish, but the final
+            standard is reviewed work that runs.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact" class="section-band contact-band">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Open a thread or inspect the work.</h2>
+        </div>
+        <div class="contact-grid">
+          <a class="contact-card interactive-surface reveal" href="https://github.com/schulerj89" target="_blank" rel="noopener">
+            <span>GitHub</span>
+            <strong>github.com/schulerj89</strong>
           </a>
-          <a class="card" href="https://www.linkedin.com/in/josh-schuler" target="_blank" rel="noopener">
-            <div class="card-head"><h3>LinkedIn</h3></div>
-            <p>Connect professionally on LinkedIn.</p>
+          <a class="contact-card interactive-surface reveal" href="https://www.linkedin.com/in/josh-schuler" target="_blank" rel="noopener">
+            <span>LinkedIn</span>
+            <strong>linkedin.com/in/josh-schuler</strong>
           </a>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-inner">
-        <span>© <span id="year"></span> Josh Schuler</span>
-        <a class="text-link back-to-top" href="#top">Back to top ↑</a>
+      <div>
+        <span>&copy; <span id="year"></span> Josh Schuler</span>
+        <a href="#top">Back to top</a>
       </div>
     </footer>
 
