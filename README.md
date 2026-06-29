@@ -8,6 +8,9 @@ Static GitHub Pages portfolio for Josh Schuler (`@schulerj89`).
 - Featured Shadow Circuit / sneak-game project links:
   - GitHub: https://github.com/schulerj89/sneak-game
   - Live: https://schulerj89.github.io/sneak-game/
+- Orbit Janitor game project links:
+  - GitHub: https://github.com/schulerj89/orbit-janitor
+  - Live: https://schulerj89.github.io/orbit-janitor/
 - Project filters, mobile navigation, theme persistence, and an interactive signal canvas.
 - Version notes in `CHANGELOG.md`.
 - Screenshot artifacts in `artifacts/`.

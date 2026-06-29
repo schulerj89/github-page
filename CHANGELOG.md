@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-06-29 - v1.2.0
+
+- Added Orbit Janitor to the project board as a game project.
+- Added Orbit Janitor links:
+  - GitHub: `https://github.com/schulerj89/orbit-janitor`
+  - Live: `https://schulerj89.github.io/orbit-janitor/`
+
 ## 2026-06-16 - v1.1.0
 
 - Revamped the GitHub Pages portfolio into a responsive interactive developer site.
