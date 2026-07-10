@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-07-10 - v2.0.0
+
+- Rebuilt the portfolio around the editorial “Build Loop” direction: Frame, Build, Verify, Ship.
+- Replaced the generic terminal/canvas presentation with restrained native-scroll motion, a sticky case study, active navigation, scroll progress, and real project evidence.
+- Added Campus Gridiron Dynasty and the Tecmo Basketball Native Port while retaining Shadow Circuit, Orbit Janitor, selected experiments, and Laravel contributions.
+- Added a persisted Motion control, runtime reduced-motion handling, mobile-safe parallax fallbacks, hidden-tab animation pausing, guarded storage, and a usable no-JavaScript presentation.
+- Reworked mobile layouts down to 320px with keyboard-safe navigation, focus transfer, Escape handling, 44px targets, and deliberate project-card crops.
+- Added accessible light-theme tokens, a clear theme control, forced-colors support, canonical and social metadata, JSON-LD, manifest icons, robots, sitemap, and a 1200×630 Open Graph image.
+- Added the implementation plan in `DESIGN_PLAN.md` and refreshed `README.md` for the new portfolio.
+- Added verification artifacts:
+  - `artifacts/portfolio-desktop-v2.png`
+  - `artifacts/portfolio-mobile-v2.png`
+  - `artifacts/portfolio-mobile-light-v2.png`
+  - `artifacts/portfolio-case-study-detail-v2.png`
+  - `assets/portfolio-og.png`
+
 ## 2026-06-29 - v1.2.0
 
 - Added Orbit Janitor to the project board as a game project.

@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+
+# Local preview output
+artifacts/*.log
+
+# Never commit local credentials
+.env
+.env.*
+!.env.example

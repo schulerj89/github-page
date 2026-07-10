@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://schulerj89.github.io/github-page/sitemap.xml

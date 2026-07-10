@@ -2,398 +2,542 @@
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Josh Schuler | Software Engineering Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Josh Schuler — Engineering Leader &amp; Hands-on Builder</title>
     <meta
       name="description"
-      content="Developer portfolio for Josh Schuler: engineering leadership, AI-assisted development, web projects, open source contributions, and Shadow Circuit."
+      content="Josh Schuler is a software engineering manager and hands-on builder who turns ambiguous problems into systems teams can ship and own."
     />
-    <meta name="theme-color" content="#080a0d" />
+    <meta name="color-scheme" content="dark light" />
+    <meta id="themeColor" name="theme-color" content="#0b0d0c" />
+    <link rel="canonical" href="https://schulerj89.github.io/github-page/" />
 
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Josh Schuler" />
+    <meta property="og:url" content="https://schulerj89.github.io/github-page/" />
+    <meta property="og:title" content="Josh Schuler — Engineering Leader &amp; Hands-on Builder" />
+    <meta
+      property="og:description"
+      content="Engineering leadership with a builder's feedback loop: frame, build, verify, ship."
+    />
+    <meta property="og:image" content="https://schulerj89.github.io/github-page/assets/portfolio-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Josh Schuler portfolio — engineering leadership with a builder's feedback loop" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Josh Schuler — Engineering Leader &amp; Hands-on Builder" />
+    <meta
+      name="twitter:description"
+      content="I turn ambiguous software problems into systems teams can ship—and own."
+    />
+    <meta name="twitter:image" content="https://schulerj89.github.io/github-page/assets/portfolio-og.png" />
+
+    <link rel="icon" type="image/png" sizes="128x128" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        const theme = savedTheme === "light" || savedTheme === "dark"
+          ? savedTheme
+          : matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (_) {}
+    </script>
+    <link rel="stylesheet" href="styles.css?v=20260710" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Josh Schuler",
+        "url": "https://schulerj89.github.io/github-page/",
+        "jobTitle": "Software Engineering Manager",
+        "sameAs": ["https://github.com/schulerj89"],
+        "knowsAbout": [
+          "Engineering leadership",
+          "Software architecture",
+          "TypeScript",
+          "JavaScript",
+          "Three.js",
+          "Testing",
+          "Open source software"
+        ]
+      }
+    </script>
   </head>
+
   <body>
-    <canvas id="signalCanvas" aria-hidden="true"></canvas>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <div class="ambient-field" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header" data-elevated="false">
-      <a class="brand" href="#top" aria-label="Josh Schuler home">
-        <span class="brand-mark">JS</span>
-        <span class="brand-copy">
-          <strong>Josh Schuler</strong>
-          <span>@schulerj89</span>
-        </span>
-      </a>
+    <header id="siteHeader" class="site-header" data-elevated="false">
+      <div class="header-inner page-shell">
+        <a class="brand" href="#top" aria-label="Josh Schuler, home">
+          <span class="brand-mark" aria-hidden="true">JS</span>
+          <span class="brand-copy">
+            <strong>Josh Schuler</strong>
+            <span>Engineering leader + builder</span>
+          </span>
+        </a>
 
-      <nav id="siteNav" class="site-nav" aria-label="Primary navigation">
-        <a href="#shadow-circuit">Sneak Game</a>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+        <nav id="siteNav" class="site-nav" aria-label="Primary navigation">
+          <a href="#work">Work</a>
+          <a href="#approach">Approach</a>
+          <a href="#about">About</a>
+          <a href="#contact">Next</a>
+        </nav>
 
-      <div class="header-actions">
-        <button id="themeToggle" class="icon-button" type="button" aria-label="Toggle color theme">
-          <span class="theme-glyph" aria-hidden="true">01</span>
-        </button>
-        <button
-          id="menuToggle"
-          class="menu-button"
-          type="button"
-          aria-controls="siteNav"
-          aria-expanded="false"
-        >
-          Menu
-        </button>
+        <div class="header-actions">
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light theme">
+            <span class="theme-dot" aria-hidden="true"></span>
+            <span class="theme-label">Light</span>
+          </button>
+          <button id="motionToggle" class="motion-toggle" type="button" aria-label="Turn motion off" aria-pressed="true">
+            <span class="motion-icon" aria-hidden="true"><i></i></span>
+            <span class="motion-label">Motion</span>
+          </button>
+          <button
+            id="menuToggle"
+            class="menu-toggle"
+            type="button"
+            aria-controls="siteNav"
+            aria-expanded="false"
+          >
+            <span class="menu-label">Menu</span>
+            <span class="menu-lines" aria-hidden="true"><i></i><i></i></span>
+          </button>
+        </div>
       </div>
     </header>
 
-    <main id="main">
-      <section id="top" class="hero section-shell">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Engineering manager / practical AI builder / systems thinker</p>
-          <h1>Building useful software with strong product instincts.</h1>
-          <p class="hero-lede">
-            I am Josh Schuler, a software engineering manager who ships production systems,
-            explores AI-assisted development, and keeps a hands-on builder streak through web
-            apps, games, and open source work.
+    <main id="main" tabindex="-1">
+      <section id="top" class="hero page-shell" data-section="top">
+        <div class="hero-copy">
+          <p class="eyebrow reveal">
+            <span>Software Engineering Manager</span>
+            <span>Hands-on builder</span>
           </p>
-          <div class="hero-actions" aria-label="Primary links">
-            <a class="button primary" href="https://github.com/schulerj89" target="_blank" rel="noopener">
-              GitHub
-            </a>
-            <a class="button" href="#shadow-circuit">Featured Game</a>
-            <a class="button subtle" href="#projects">Project Board</a>
+
+          <h1 class="hero-title" aria-label="I turn ambiguity into systems teams can own.">
+            <span class="hero-line reveal" data-depth="0.18">I turn ambiguity</span>
+            <span class="hero-line reveal" data-depth="0.11">into systems</span>
+            <span class="hero-line hero-line-accent reveal" data-depth="0.04">teams can own.</span>
+          </h1>
+
+          <div class="hero-intro reveal">
+            <p>
+              For 15+ years, I’ve led engineering teams and stayed close to the work—shaping
+              architecture, improving delivery, and building production systems, browser games,
+              and open-source contributions.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#work">
+                Explore the work
+                <span aria-hidden="true">↓</span>
+              </a>
+              <a class="text-link" href="https://github.com/schulerj89" target="_blank" rel="noopener">
+                View GitHub <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
         </div>
 
-        <aside class="hero-console interactive-surface reveal" aria-label="Current focus">
-          <div class="console-topbar" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
+        <aside class="loop-panel reveal" aria-label="Josh's four-part build loop: frame, build, verify, ship">
+          <div class="loop-meta" aria-hidden="true">
+            <span>BUILD LOOP / 01</span>
+            <span>OWN THE OUTCOME</span>
           </div>
-          <p class="console-label">Current build</p>
-          <h2>Shadow Circuit</h2>
-          <p>
-            A Three.js stealth prototype where you sneak through dark rooms, read guard cones,
-            collect objectives, and clear twelve levels.
+          <div id="loopVisual" class="loop-visual">
+            <div class="loop-ring loop-ring-outer"></div>
+            <div class="loop-ring loop-ring-inner"></div>
+            <div class="loop-sweep"></div>
+            <div class="loop-center">
+              <strong>JS</strong>
+              <span>builder’s<br />feedback loop</span>
+            </div>
+            <ol class="loop-nodes">
+              <li class="loop-node node-frame"><span>01</span><strong>Frame</strong></li>
+              <li class="loop-node node-build"><span>02</span><strong>Build</strong></li>
+              <li class="loop-node node-verify"><span>03</span><strong>Verify</strong></li>
+              <li class="loop-node node-ship"><span>04</span><strong>Ship</strong></li>
+            </ol>
+          </div>
+          <p class="loop-caption">
+            A practical loop for turning a messy idea into software people can understand,
+            validate, and maintain.
           </p>
-          <dl class="console-metrics">
-            <div>
-              <dt>Stack</dt>
-              <dd>TypeScript + Three.js</dd>
-            </div>
-            <div>
-              <dt>Levels</dt>
-              <dd>12</dd>
-            </div>
-            <div>
-              <dt>Deploy</dt>
-              <dd>GitHub Pages</dd>
-            </div>
-          </dl>
-          <div class="console-actions">
-            <a href="https://github.com/schulerj89/sneak-game" target="_blank" rel="noopener">Repo</a>
-            <a href="https://schulerj89.github.io/sneak-game/" target="_blank" rel="noopener">Live</a>
-          </div>
         </aside>
+
+        <div class="proof-rail reveal" role="list" aria-label="Portfolio highlights">
+          <div role="listitem"><strong>15+</strong><span>years shipping software</span></div>
+          <div role="listitem"><strong>70</strong><span>programs in a full dynasty sim</span></div>
+          <div role="listitem"><strong>12</strong><span>hand-built stealth levels</span></div>
+          <div role="listitem"><strong>OSS</strong><span>Laravel framework + docs</span></div>
+        </div>
+
+        <a class="scroll-cue" href="#work" aria-label="Scroll to selected work">
+          <span>Scroll to work</span>
+          <i aria-hidden="true"></i>
+        </a>
       </section>
 
-      <section class="signal-strip" aria-label="Portfolio highlights">
-        <div>
-          <strong>13+</strong>
-          <span>years shipping software</span>
-        </div>
-        <div>
-          <strong>AI</strong>
-          <span>reviewed, tested, and owned</span>
-        </div>
-        <div>
-          <strong>OSS</strong>
-          <span>Laravel docs and framework PRs</span>
-        </div>
-        <div>
-          <strong>Games</strong>
-          <span>browser prototypes with real play loops</span>
-        </div>
-      </section>
-
-      <section id="shadow-circuit" class="section-band feature-band">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Featured project</p>
-          <h2>Shadow Circuit, the sneak game.</h2>
+      <section id="work" class="section work-section" data-section="work">
+        <div class="section-intro page-shell reveal">
+          <p class="section-index">01 / Selected work</p>
+          <h2>Built close enough to the details to make the tradeoffs real.</h2>
           <p>
-            The repo is named <strong>sneak-game</strong>, and the game is a dark sci-fi stealth
-            prototype built around readable patrols, objective gates, mobile controls, and fast
-            iteration.
+            I use side projects as a working lab for product judgment, architecture, testing,
+            performance, and the thousand small decisions between an idea and a release.
           </p>
         </div>
 
-        <div class="feature-layout">
-          <article class="feature-copy interactive-surface reveal">
-            <div class="project-badges">
-              <span>Game</span>
-              <span>Three.js</span>
-              <span>TypeScript</span>
-              <span>GitHub Pages</span>
+        <article id="campus-gridiron" class="case-study page-shell" data-step="1">
+          <div class="case-visual-column">
+            <div class="case-visual">
+              <div class="case-frame">
+                <div class="case-frame-bar">
+                  <span>CASE STUDY / 01</span>
+                  <span class="case-status"><i aria-hidden="true"></i> Live build</span>
+                </div>
+                <figure class="case-screen">
+                  <img
+                    src="assets/campus-gridiron.webp"
+                    width="1440"
+                    height="980"
+                    alt="Campus Gridiron Dynasty dashboard showing a fictional college football program, ratings, matchup preview, and navigation"
+                    decoding="async"
+                  />
+                  <span class="case-scanline" aria-hidden="true"></span>
+                  <span class="case-focus focus-one" aria-hidden="true"></span>
+                  <span class="case-focus focus-two" aria-hidden="true"></span>
+                  <span class="case-focus focus-three" aria-hidden="true"></span>
+                </figure>
+                <div class="case-caption">
+                  <span class="caption-index">01</span>
+                  <span class="caption-copy">A 20-year world that has to stay legible.</span>
+                </div>
+              </div>
+              <dl class="case-metrics">
+                <div><dt>Simulation</dt><dd>20 seasons</dd></div>
+                <div><dt>World</dt><dd>70 programs</dd></div>
+                <div><dt>Roster</dt><dd>85 players / team</dd></div>
+              </dl>
             </div>
-            <h3>Built like a portfolio piece, tested like a product.</h3>
-            <p>
-              Shadow Circuit includes level validation, browser smoke tests, mobile joystick
-              checks, asset documentation, and screenshot scripts. It is the kind of side project
-              that shows engineering taste beyond a static demo.
-            </p>
-            <div class="action-row">
-              <a class="button primary" href="https://github.com/schulerj89/sneak-game" target="_blank" rel="noopener">
-                Sneak Game GitHub
-              </a>
-              <a class="button" href="https://schulerj89.github.io/sneak-game/" target="_blank" rel="noopener">
-                Play Live
-              </a>
-            </div>
-          </article>
+          </div>
 
-          <div class="game-visual reveal" aria-label="Stylized Shadow Circuit level preview">
-            <div class="map-toolbar">
-              <span>sector-09</span>
-              <span>stealth route</span>
+          <div class="case-story">
+            <header class="case-heading reveal">
+              <p class="project-kicker">Simulation system · React + TypeScript</p>
+              <h3>Campus Gridiron Dynasty</h3>
+              <p class="case-lede">
+                A fictional college-football world with recruiting, coaching movement, awards,
+                budgets, bowls, playoffs, and twenty seasons of consequences.
+              </p>
+              <div class="project-actions">
+                <a class="button button-primary" href="https://schulerj89.github.io/campus-gridiron-dynasty/" target="_blank" rel="noopener">
+                  Open the dynasty <span aria-hidden="true">↗</span>
+                </a>
+                <a class="text-link" href="https://github.com/schulerj89/campus-gridiron-dynasty" target="_blank" rel="noopener">
+                  View source <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </header>
+
+            <div class="story-steps">
+              <section class="story-step is-active" data-step="1" data-caption="A 20-year world that has to stay legible.">
+                <span class="story-number">01</span>
+                <div>
+                  <p class="story-label">Frame</p>
+                  <h4>Make a deep simulation readable at a glance.</h4>
+                  <p>
+                    A dynasty only works when thousands of moving parts still resolve into a clear
+                    next decision. The interface keeps the week, program, matchup, and long-term arc
+                    in view without flattening the depth.
+                  </p>
+                </div>
+              </section>
+
+              <section class="story-step" data-step="2" data-caption="Depth comes from connected systems, not a pile of screens.">
+                <span class="story-number">02</span>
+                <div>
+                  <p class="story-label">Build</p>
+                  <h4>Connect the systems so choices carry forward.</h4>
+                  <p>
+                    Seventy programs, 85-player rosters, recruiting classes, hidden traits,
+                    coaching changes, budgets, rankings, awards, bowls, and an eight-team playoff
+                    all evolve inside one persistent save.
+                  </p>
+                </div>
+              </section>
+
+              <section class="story-step" data-step="3" data-caption="Fixed seeds turn a sprawling sim into repeatable proof.">
+                <span class="story-number">03</span>
+                <div>
+                  <p class="story-label">Verify</p>
+                  <h4>Test the long loop, not just the happy path.</h4>
+                  <p>
+                    Simulation-heavy tests run alongside repeatable browser smoke checks across
+                    Chromium, WebKit, and an iPhone profile—forcing playoffs, awards, recruiting,
+                    and multiple seasons so regressions surface before release.
+                  </p>
+                </div>
+              </section>
             </div>
-            <div class="map-grid" aria-hidden="true">
-              <span class="wall a"></span>
-              <span class="wall b"></span>
-              <span class="wall c"></span>
-              <span class="objective key"></span>
-              <span class="objective terminal"></span>
-              <span class="guard g1"></span>
-              <span class="guard g2"></span>
-              <span class="cone c1"></span>
-              <span class="cone c2"></span>
-              <span class="player"></span>
-              <span class="route r1"></span>
-              <span class="route r2"></span>
-              <span class="exit"></span>
+          </div>
+        </article>
+
+        <div class="projects-block page-shell">
+          <div class="projects-heading reveal">
+            <p class="section-index">02 / More systems</p>
+            <h3>Different surfaces. Same ownership.</h3>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card project-card-wide reveal">
+              <a class="project-media" href="https://schulerj89.github.io/sneak-game/" target="_blank" rel="noopener" aria-label="Play Shadow Circuit">
+                <img
+                  class="parallax-media"
+                  src="assets/shadow-circuit.webp"
+                  width="1440"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Shadow Circuit stealth level with patrol enemies, light cones, keycards, and terminals"
+                />
+                <span class="media-label">Playable / 12 levels</span>
+              </a>
+              <div class="project-body">
+                <div class="project-title-row">
+                  <p class="project-kicker">Three.js stealth game</p>
+                  <span>2026</span>
+                </div>
+                <h4>Shadow Circuit</h4>
+                <p>
+                  Read patrol sightlines, collect gated objectives, and clear twelve dark sci-fi
+                  levels. Built with level validation, desktop and mobile controls, browser smoke
+                  tests, and repeatable screenshot tooling.
+                </p>
+                <div class="project-footer">
+                  <ul class="tag-list" aria-label="Shadow Circuit technologies">
+                    <li>Three.js</li><li>TypeScript</li><li>Vite</li>
+                  </ul>
+                  <div class="inline-links">
+                    <a href="https://schulerj89.github.io/sneak-game/" target="_blank" rel="noopener">Play <span aria-hidden="true">↗</span></a>
+                    <a href="https://github.com/schulerj89/sneak-game" target="_blank" rel="noopener">Source <span aria-hidden="true">↗</span></a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card project-card-tall reveal">
+              <a class="project-media project-media-pixel" href="https://github.com/schulerj89/tecmo-basketball-port" target="_blank" rel="noopener" aria-label="View the Tecmo Basketball native port source">
+                <img
+                  class="parallax-media"
+                  src="assets/tecmo-port.webp"
+                  width="960"
+                  height="720"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Native port prototype menu for Tecmo Basketball"
+                />
+                <span class="media-label">Native C / work in progress</span>
+              </a>
+              <div class="project-body">
+                <div class="project-title-row">
+                  <p class="project-kicker">Systems + preservation</p>
+                  <span>2026</span>
+                </div>
+                <h4>Tecmo Basketball Native Port</h4>
+                <p>
+                  A clean-room native C port workspace built from verified behavior, with strict
+                  boundaries that keep original game data and copyrighted assets outside the
+                  public repository.
+                </p>
+                <div class="project-footer">
+                  <ul class="tag-list" aria-label="Tecmo port technologies"><li>C</li><li>Native</li><li>Tests</li></ul>
+                  <div class="inline-links">
+                    <a href="https://github.com/schulerj89/tecmo-basketball-port" target="_blank" rel="noopener">Source <span aria-hidden="true">↗</span></a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card project-card-tall orbit-card reveal">
+              <a class="orbit-visual" href="https://schulerj89.github.io/orbit-janitor/" target="_blank" rel="noopener" aria-label="Play Orbit Janitor">
+                <span class="orbit-core" aria-hidden="true"></span>
+                <span class="orbit-line orbit-line-one" aria-hidden="true"><i></i></span>
+                <span class="orbit-line orbit-line-two" aria-hidden="true"><i></i></span>
+                <span class="orbit-line orbit-line-three" aria-hidden="true"><i></i></span>
+                <span class="orbit-copy"><strong>ORBIT</strong><em>JANITOR</em></span>
+                <span class="media-label">Playable / procedural arcade</span>
+              </a>
+              <div class="project-body">
+                <div class="project-title-row">
+                  <p class="project-kicker">Procedural arcade game</p>
+                  <span>2026</span>
+                </div>
+                <h4>Orbit Janitor</h4>
+                <p>
+                  Clean orbital lanes without losing momentum: switch lanes, chain pickups,
+                  manage boost fuel, read hazard telegraphs, and survive procedural sector missions.
+                </p>
+                <div class="project-footer">
+                  <ul class="tag-list" aria-label="Orbit Janitor technologies"><li>Three.js</li><li>TypeScript</li><li>Procedural</li></ul>
+                  <div class="inline-links">
+                    <a href="https://schulerj89.github.io/orbit-janitor/" target="_blank" rel="noopener">Play <span aria-hidden="true">↗</span></a>
+                    <a href="https://github.com/schulerj89/orbit-janitor" target="_blank" rel="noopener">Source <span aria-hidden="true">↗</span></a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card project-card-wide oss-card reveal">
+              <div class="oss-field" aria-hidden="true">
+                <span class="oss-word">LARAVEL</span>
+                <span class="oss-mark">OSS</span>
+                <span class="oss-line"></span>
+              </div>
+              <div class="project-body">
+                <div class="project-title-row">
+                  <p class="project-kicker">Open-source contribution</p>
+                  <span>Framework + docs</span>
+                </div>
+                <h4>Make the path clearer for the next developer.</h4>
+                <p>
+                  Documentation and framework pull requests across Laravel projects, with a bias
+                  toward understandable APIs, maintainable changes, and developer experience.
+                </p>
+                <nav class="oss-links" aria-label="Selected Laravel pull requests">
+                  <a href="https://github.com/laravel/docs/pull/8123" target="_blank" rel="noopener"><span>laravel/docs</span><strong>#8123 ↗</strong></a>
+                  <a href="https://github.com/laravel/framework/pull/43639" target="_blank" rel="noopener"><span>laravel/framework</span><strong>#43639 ↗</strong></a>
+                  <a href="https://github.com/laravel/framework/pull/53097" target="_blank" rel="noopener"><span>laravel/framework</span><strong>#53097 ↗</strong></a>
+                  <a href="https://github.com/laravel/framework/pull/53109" target="_blank" rel="noopener"><span>laravel/framework</span><strong>#53109 ↗</strong></a>
+                </nav>
+              </div>
+            </article>
+          </div>
+
+          <div class="more-work reveal">
+            <p>More from the lab</p>
+            <div class="more-work-links">
+              <a href="https://schulerj89.github.io/tictactoe/" target="_blank" rel="noopener"><span>Tic Tac Toe</span><small>AI game ↗</small></a>
+              <a href="https://github.com/schulerj89/sigil-breaker" target="_blank" rel="noopener"><span>Sigil Breaker</span><small>FPS foundation / WIP ↗</small></a>
+              <a href="https://github.com/schulerj89/formula-js" target="_blank" rel="noopener"><span>Formula JS</span><small>TypeScript ↗</small></a>
+              <a href="https://github.com/schulerj89" target="_blank" rel="noopener"><span>All repositories</span><small>GitHub ↗</small></a>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="projects" class="section-band">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Selected work</p>
-          <h2>Project board</h2>
-          <p>
-            A focused set of games, web apps, AI experiments, and open source contributions. Use
-            the filters to scan by kind of work.
-          </p>
-        </div>
-
-        <div class="project-toolbar reveal" role="group" aria-label="Filter projects">
-          <button class="filter-button is-active" type="button" data-filter="all">All</button>
-          <button class="filter-button" type="button" data-filter="game">Games</button>
-          <button class="filter-button" type="button" data-filter="web">Web</button>
-          <button class="filter-button" type="button" data-filter="ai">AI</button>
-          <button class="filter-button" type="button" data-filter="oss">OSS</button>
-          <span id="projectCount" class="project-count" aria-live="polite"></span>
-        </div>
-
-        <div class="project-grid">
-          <article class="project-card interactive-surface reveal" data-category="game web">
-            <p class="card-kicker">Featured game</p>
-            <h3>Shadow Circuit</h3>
+      <section id="approach" class="section approach-section" data-section="approach">
+        <div class="approach-grid page-shell">
+          <div class="approach-heading reveal">
+            <p class="section-index">03 / Working approach</p>
+            <h2>A builder’s feedback loop.</h2>
             <p>
-              Three.js stealth game prototype with guard vision cones, objective-gated exits,
-              level validation, mobile controls, and a GitHub Pages deployment pipeline.
+              Leadership works better when the plan stays connected to the product, the code,
+              and the evidence.
             </p>
-            <div class="project-badges">
-              <span>Three.js</span>
-              <span>TypeScript</span>
-              <span>Vite</span>
-            </div>
-            <div class="card-links">
-              <a href="https://github.com/schulerj89/sneak-game" target="_blank" rel="noopener">GitHub Repo</a>
-              <a href="https://schulerj89.github.io/sneak-game/" target="_blank" rel="noopener">Live Game</a>
-            </div>
-          </article>
-
-          <article class="project-card interactive-surface reveal" data-category="game web">
-            <p class="card-kicker">Arcade game</p>
-            <h3>Orbit Janitor</h3>
-            <p>
-              Procedural Three.js arcade game about cleaning orbital lanes, switching between
-              three lanes, chaining combos, managing boost fuel, and surviving sector missions.
-            </p>
-            <div class="project-badges">
-              <span>Three.js</span>
-              <span>TypeScript</span>
-              <span>Vite</span>
-            </div>
-            <div class="card-links">
-              <a href="https://github.com/schulerj89/orbit-janitor" target="_blank" rel="noopener">GitHub Repo</a>
-              <a href="https://schulerj89.github.io/orbit-janitor/" target="_blank" rel="noopener">Live Game</a>
-            </div>
-          </article>
-
-          <article class="project-card interactive-surface reveal" data-category="game web">
-            <p class="card-kicker">Browser game</p>
-            <h3>Tic Tac Toe</h3>
-            <p>
-              Polished browser game with AI difficulty, match mode, persistent stats, and a
-              lightweight static deployment.
-            </p>
-            <div class="project-badges">
-              <span>JavaScript</span>
-              <span>Vite</span>
-              <span>GitHub Pages</span>
-            </div>
-            <div class="card-links">
-              <a href="https://schulerj89.github.io/tictactoe/" target="_blank" rel="noopener">Open Project</a>
-            </div>
-          </article>
-
-          <article class="project-card interactive-surface reveal" data-category="web ai">
-            <p class="card-kicker">Portfolio system</p>
-            <h3>GitHub Pages Lab</h3>
-            <p>
-              This site: static, fast, responsive, versioned with a specialist skill, changelog,
-              and screenshot artifacts for each meaningful refresh.
-            </p>
-            <div class="project-badges">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-            </div>
-            <div class="card-links">
-              <a href="https://github.com/schulerj89/github-page" target="_blank" rel="noopener">GitHub Repo</a>
-            </div>
-          </article>
-
-          <article class="project-card interactive-surface reveal" data-category="oss">
-            <p class="card-kicker">Open source</p>
-            <h3>Laravel Contributions</h3>
-            <p>
-              Documentation and framework pull requests across Laravel projects, with a bias
-              toward clear developer experience and maintainable changes.
-            </p>
-            <div class="project-badges">
-              <span>Laravel</span>
-              <span>PHP</span>
-              <span>Docs</span>
-            </div>
-            <div class="card-links">
-              <a href="https://github.com/laravel/docs/pull/8123" target="_blank" rel="noopener">Docs PR 8123</a>
-              <a href="https://github.com/laravel/framework/pull/43639" target="_blank" rel="noopener">Framework PR</a>
-            </div>
-          </article>
-        </div>
-
-        <details class="contribution-drawer reveal">
-          <summary>
-            More Laravel pull requests
-            <span aria-hidden="true">+</span>
-          </summary>
-          <div class="link-list">
-            <a href="https://github.com/laravel/docs/pull/8113" target="_blank" rel="noopener">laravel/docs #8113</a>
-            <a href="https://github.com/laravel/framework/pull/43841" target="_blank" rel="noopener">laravel/framework #43841</a>
-            <a href="https://github.com/laravel/framework/pull/53009" target="_blank" rel="noopener">laravel/framework #53009</a>
-            <a href="https://github.com/laravel/framework/pull/53054" target="_blank" rel="noopener">laravel/framework #53054</a>
-            <a href="https://github.com/laravel/framework/pull/53097" target="_blank" rel="noopener">laravel/framework #53097</a>
-            <a href="https://github.com/laravel/framework/pull/53109" target="_blank" rel="noopener">laravel/framework #53109</a>
           </div>
-        </details>
+
+          <ol class="approach-list">
+            <li class="approach-item reveal" data-loop-stage="frame">
+              <span class="approach-number">01</span>
+              <div><h3>Frame the ambiguity.</h3><p>Turn a fuzzy problem into constraints, risks, decisions, and a first testable slice.</p></div>
+              <span class="approach-verb">FRAME</span>
+            </li>
+            <li class="approach-item reveal" data-loop-stage="build">
+              <span class="approach-number">02</span>
+              <div><h3>Keep the system legible.</h3><p>Choose architecture and interfaces the next teammate can understand, change, and own.</p></div>
+              <span class="approach-verb">BUILD</span>
+            </li>
+            <li class="approach-item reveal" data-loop-stage="verify">
+              <span class="approach-number">03</span>
+              <div><h3>Validate the loop.</h3><p>Use tests, screenshots, telemetry, and real usage to replace assumptions with evidence.</p></div>
+              <span class="approach-verb">VERIFY</span>
+            </li>
+            <li class="approach-item reveal" data-loop-stage="ship">
+              <span class="approach-number">04</span>
+              <div><h3>Ship ownership, not output.</h3><p>Release work that the team can operate, explain, maintain, and improve after launch.</p></div>
+              <span class="approach-verb">SHIP</span>
+            </li>
+          </ol>
+        </div>
       </section>
 
-      <section id="about" class="section-band about-band">
-        <div class="section-heading reveal">
-          <p class="eyebrow">About</p>
-          <h2>Hands-on leadership with a builder's feedback loop.</h2>
-        </div>
-
-        <div class="about-layout">
+      <section id="about" class="section about-section" data-section="about">
+        <div class="about-grid page-shell">
+          <div class="about-title reveal">
+            <p class="section-index">04 / About</p>
+            <h2>Leadership with a builder’s feedback loop.</h2>
+          </div>
           <div class="about-copy reveal">
-            <p>
-              I have 13+ years of experience shipping production software and leading engineering
-              teams. I care about practical architecture, clean delivery, reliable systems, and
-              tools that make developers faster without hiding the need for judgment.
+            <p class="about-lede">
+              I’m at my best when the problem is still messy: turning it into a plan, keeping the
+              architecture understandable, and building enough myself to stay close to the tradeoffs.
             </p>
             <p>
-              My AI work is intentionally grounded: use copilots for acceleration, then review,
-              test, and reshape the output until it is something I would maintain.
+              I’ve spent 15+ years shipping production software and leading engineering teams.
+              Games and experiments keep my feedback loop honest—they force product choices,
+              performance budgets, edge cases, and release discipline into the same small space.
+            </p>
+            <p>
+              AI is one tool in that loop. I use it to accelerate exploration and implementation,
+              then review, test, and reshape the result until it is work I’m prepared to maintain.
             </p>
           </div>
-
-          <ul class="principle-list reveal" aria-label="Working principles">
-            <li>
-              <strong>Turn ambiguity into plans.</strong>
-              <span>Break fuzzy ideas into scoped, testable increments.</span>
-            </li>
-            <li>
-              <strong>Keep the system legible.</strong>
-              <span>Prefer code and interfaces that future teammates can reason about.</span>
-            </li>
-            <li>
-              <strong>Validate the loop.</strong>
-              <span>Use tests, screenshots, logs, and real usage instead of vibes.</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="skill-cloud reveal" aria-label="Core stack and focus areas">
-          <span>TypeScript</span>
-          <span>JavaScript</span>
-          <span>Node</span>
-          <span>APIs</span>
-          <span>Frontend UX</span>
-          <span>AI-assisted development</span>
-          <span>Testing</span>
-          <span>Developer experience</span>
-          <span>Open source</span>
+          <div class="capability-grid reveal" role="list" aria-label="Core focus areas">
+            <div role="listitem"><span>01</span><strong>Engineering leadership</strong><small>Plans, systems, delivery</small></div>
+            <div role="listitem"><span>02</span><strong>Product-minded architecture</strong><small>Clear tradeoffs, durable code</small></div>
+            <div role="listitem"><span>03</span><strong>Hands-on development</strong><small>TypeScript, JavaScript, APIs</small></div>
+            <div role="listitem"><span>04</span><strong>Evidence-led quality</strong><small>Tests, screenshots, telemetry</small></div>
+          </div>
         </div>
       </section>
 
-      <section id="ai" class="section-band ai-band">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Build notes</p>
-          <h2>AI is in the workflow, accountability stays human.</h2>
-          <p>
-            This portfolio is intentionally versioned with a local specialist skill, a changelog,
-            and screenshot artifacts. AI can help with ideation, code, and polish, but the final
-            standard is reviewed work that runs.
-          </p>
-        </div>
-      </section>
-
-      <section id="contact" class="section-band contact-band">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Contact</p>
-          <h2>Open a thread or inspect the work.</h2>
-        </div>
-        <div class="contact-grid">
-          <a class="contact-card interactive-surface reveal" href="https://github.com/schulerj89" target="_blank" rel="noopener">
-            <span>GitHub</span>
-            <strong>github.com/schulerj89</strong>
-          </a>
-          <a class="contact-card interactive-surface reveal" href="https://www.linkedin.com/in/josh-schuler" target="_blank" rel="noopener">
-            <span>LinkedIn</span>
-            <strong>linkedin.com/in/josh-schuler</strong>
-          </a>
+      <section id="contact" class="section contact-section" data-section="contact">
+        <div class="contact-inner page-shell">
+          <p class="section-index reveal">05 / Next</p>
+          <div class="contact-layout">
+            <h2 class="reveal">Take the work for a spin—or inspect how it was built.</h2>
+            <div class="contact-copy reveal">
+              <p>Every featured project is public. Start with the source, or jump directly into the most complete simulation.</p>
+              <div class="contact-links">
+                <a href="https://github.com/schulerj89" target="_blank" rel="noopener">
+                  <span>Inspect</span><strong>GitHub</strong><i aria-hidden="true">↗</i>
+                </a>
+                <a href="https://schulerj89.github.io/campus-gridiron-dynasty/" target="_blank" rel="noopener">
+                  <span>Experience</span><strong>Featured build</strong><i aria-hidden="true">↗</i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div>
-        <span>&copy; <span id="year"></span> Josh Schuler</span>
-        <a href="#top">Back to top</a>
+      <div class="footer-inner page-shell">
+        <div>
+          <strong>Josh Schuler</strong>
+          <span>Software Engineering Manager + hands-on builder</span>
+        </div>
+        <p>Designed around a simple loop: frame, build, verify, ship.</p>
+        <div class="footer-meta">
+          <span>© <span id="year"></span></span>
+          <a href="#top">Back to top ↑</a>
+        </div>
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260710"></script>
   </body>
 </html>
