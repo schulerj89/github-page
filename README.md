@@ -44,6 +44,11 @@ Then open `http://127.0.0.1:8080/`.
 - `artifacts/portfolio-mobile-v2.png`
 - `artifacts/portfolio-mobile-light-v2.png`
 - `artifacts/portfolio-case-study-detail-v2.png`
+- `artifacts/portfolio-campus-polish-v2.0.1.png`
+- `artifacts/portfolio-tecmo-polish-v2.0.1.png`
+- `artifacts/portfolio-approach-polish-v2.0.1.png`
+- `artifacts/portfolio-mobile-polish-v2.0.1.png`
+- `artifacts/portfolio-approach-mobile-polish-v2.0.1.png`
 - `assets/portfolio-og.png`
 
 ## Deploy

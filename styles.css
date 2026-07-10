@@ -11,6 +11,8 @@
   --signal: #b8ff59;
   --signal-soft: rgba(184, 255, 89, 0.12);
   --signal-line: rgba(184, 255, 89, 0.45);
+  --signal-ghost: #6c9537;
+  --signal-ghost-active: #92d54b;
   --blue: #78c9ff;
   --line: rgba(241, 239, 231, 0.14);
   --line-strong: rgba(241, 239, 231, 0.28);
@@ -45,6 +47,8 @@
   --signal: #347000;
   --signal-soft: rgba(52, 112, 0, 0.1);
   --signal-line: rgba(52, 112, 0, 0.42);
+  --signal-ghost: #5a892e;
+  --signal-ghost-active: #387403;
   --blue: #00699f;
   --line: rgba(18, 22, 18, 0.16);
   --line-strong: rgba(18, 22, 18, 0.3);
@@ -967,27 +971,6 @@ html:not(.js) .menu-toggle {
   to { transform: translateY(720%); }
 }
 
-.case-focus {
-  position: absolute;
-  border: 1px solid rgba(184, 255, 89, 0.85);
-  border-radius: 4px;
-  opacity: 0;
-  box-shadow: 0 0 0 999px rgba(2, 7, 8, 0.12);
-  transition:
-    opacity 480ms ease,
-    transform 700ms ease;
-}
-
-.focus-one { top: 4%; left: 2%; width: 59%; height: 20%; }
-.focus-two { top: 25%; left: 2%; width: 96%; height: 30%; }
-.focus-three { top: 58%; left: 2%; width: 96%; height: 35%; }
-
-.case-study[data-step="1"] .focus-one,
-.case-study[data-step="2"] .focus-two,
-.case-study[data-step="3"] .focus-three {
-  opacity: 1;
-}
-
 .case-caption {
   display: grid;
   min-height: 82px;
@@ -1207,7 +1190,19 @@ html:not(.js) .menu-toggle {
 }
 
 .project-media-pixel img {
-  image-rendering: auto;
+  transform: none;
+  object-fit: contain;
+  background: #000;
+  image-rendering: pixelated;
+  will-change: auto;
+}
+
+.project-media-pixel:hover img {
+  transform: none;
+}
+
+.project-card.is-onscreen .project-media-pixel img {
+  will-change: auto;
 }
 
 .media-label {
@@ -1540,10 +1535,11 @@ html:not(.js) .menu-toggle {
 .approach-item {
   position: relative;
   display: grid;
-  min-height: 250px;
+  min-height: 280px;
   grid-template-columns: 52px 1fr;
   gap: 18px;
-  align-content: center;
+  align-content: start;
+  padding: 42px 0 106px;
   overflow: hidden;
   border-top: 1px solid var(--line);
 }
@@ -1582,23 +1578,18 @@ html:not(.js) .menu-toggle {
 .approach-verb {
   position: absolute;
   right: 0;
-  bottom: -0.24em;
-  color: transparent;
+  bottom: 12px;
+  color: var(--signal-ghost);
   font-size: clamp(4.8rem, 9vw, 9rem);
   font-weight: 600;
   letter-spacing: -0.08em;
-  line-height: 0.8;
-  -webkit-text-stroke: 1px var(--line);
-  transition:
-    color 280ms ease,
-    transform 360ms ease;
+  line-height: 1;
+  transition: color 280ms ease;
 }
 
 .approach-item:hover .approach-verb,
 .approach-item.is-current .approach-verb {
-  transform: translateX(-10px);
-  color: var(--signal-soft);
-  -webkit-text-stroke-color: var(--signal-line);
+  color: var(--signal-ghost-active);
 }
 
 .about-section {
@@ -2097,7 +2088,7 @@ html:not(.js) .menu-toggle {
   .approach-grid { grid-template-columns: 1fr; gap: 64px; }
   .approach-heading { position: relative; top: auto; }
   .approach-heading h2 { max-width: 9ch; }
-  .approach-item { min-height: 230px; }
+  .approach-item { min-height: 270px; padding: 36px 0 92px; }
 
   .about-grid { grid-template-columns: 1fr; }
   .about-title,
@@ -2212,7 +2203,6 @@ html:not(.js) .menu-toggle {
     forced-color-adjust: auto;
   }
 
-  .case-focus,
   .scroll-progress span,
   .case-status i,
   .theme-dot,

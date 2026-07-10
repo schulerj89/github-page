@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-07-10 - v2.0.1
+
+- Replaced the Tecmo Basketball Native Port preview with the supplied Tecmo Presents artwork.
+- Removed the Campus Gridiron screenshot focus boxes while retaining the scroll-driven crop and caption changes.
+- Made the Frame, Build, Verify, and Ship labels fully visible and increased their contrast across desktop and mobile.
+
 ## 2026-07-10 - v2.0.0
 
 - Rebuilt the portfolio around the editorial “Build Loop” direction: Frame, Build, Verify, Ship.
