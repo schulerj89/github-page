@@ -1388,6 +1388,14 @@ html:not(.js) .menu-toggle {
   line-height: 0.8;
 }
 
+.port-word {
+  max-width: 90%;
+  font-size: clamp(2.7rem, 7vw, 7rem);
+  letter-spacing: -0.055em;
+  line-height: 0.88;
+  text-align: center;
+}
+
 .oss-mark {
   position: absolute;
   top: 22px;

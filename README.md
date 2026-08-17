@@ -6,13 +6,13 @@ Static GitHub Pages portfolio for Josh Schuler (`@schulerj89`).
 
 <https://schulerj89.github.io/github-page/>
 
-## The Build Loop redesign
+## Portfolio focus
 
-The portfolio is designed around a four-part engineering loop: **Frame → Build → Verify → Ship**.
+The portfolio foregrounds reverse engineering and source-level preservation while retaining the four-part engineering loop: **Frame → Build → Verify → Ship**.
 
 - Editorial, evidence-led visual direction with real project captures.
-- Sticky Campus Gridiron Dynasty case study on desktop and normal document flow on mobile.
-- Selected work across Three.js games, a native C port, procedural systems, and Laravel open source.
+- Sticky native-porting case study on desktop and normal document flow on mobile.
+- Selected work across three native C ports plus Laravel and PHP open-source contributions.
 - Native scrolling with restrained pointer depth, image parallax, active-section navigation, and scroll progress.
 - Persisted dark/light themes with theme-specific accessible colors.
 - Persisted Motion control plus `prefers-reduced-motion`, coarse-pointer, narrow-screen, offscreen, and hidden-tab fallbacks.
@@ -24,11 +24,10 @@ The implementation plan and design standards are documented in [`DESIGN_PLAN.md`
 
 ## Featured work
 
-- [Campus Gridiron Dynasty](https://schulerj89.github.io/campus-gridiron-dynasty/) — 20-year fictional college-football simulation.
-- [Shadow Circuit](https://schulerj89.github.io/sneak-game/) — 12-level Three.js stealth game.
-- [Tecmo Basketball Native Port](https://github.com/schulerj89/tecmo-basketball-port) — clean-room native C port workspace.
-- [Orbit Janitor](https://schulerj89.github.io/orbit-janitor/) — procedural Three.js arcade game.
-- Selected [Laravel framework](https://github.com/laravel/framework/pull/43639) and [documentation](https://github.com/laravel/docs/pull/8123) contributions.
+- [NBA All-Star Challenge Native Port](https://github.com/schulerj89/all-star-challenge-c-port) — Game Boy behavior reconstructed in native C.
+- [Double Dribble Native Port](https://github.com/schulerj89/double-dribble-c-port) — NES behavior reconstructed in native C.
+- [Tecmo Basketball Native Port](https://github.com/schulerj89/tecmo-basketball-port) — playable NES-to-native-C reconstruction.
+- Selected [Laravel framework](https://github.com/laravel/framework/pull/53109), [Laravel documentation](https://github.com/laravel/docs/pull/8123), and [PHP documentation](https://github.com/php/doc-en/pull/3135) contributions.
 
 ## Local preview
 

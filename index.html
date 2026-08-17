@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Josh Schuler — Engineering Leader &amp; Hands-on Builder</title>
+    <title>Josh Schuler — Reverse Engineering &amp; Native Game Ports</title>
     <meta
       name="description"
-      content="Josh Schuler is a software engineering manager and hands-on builder who turns ambiguous problems into systems teams can ship and own."
+      content="Josh Schuler reconstructs classic console games as native C programs using disassembly, emulator traces, and evidence-led verification."
     />
     <meta name="color-scheme" content="dark light" />
     <meta id="themeColor" name="theme-color" content="#0b0d0c" />
@@ -15,20 +15,20 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Josh Schuler" />
     <meta property="og:url" content="https://schulerj89.github.io/github-page/" />
-    <meta property="og:title" content="Josh Schuler — Engineering Leader &amp; Hands-on Builder" />
+    <meta property="og:title" content="Josh Schuler — Reverse Engineering &amp; Native Game Ports" />
     <meta
       property="og:description"
-      content="Engineering leadership with a builder's feedback loop: frame, build, verify, ship."
+      content="Source-level preservation work: Game Boy and NES games reconstructed as native C programs."
     />
     <meta property="og:image" content="https://schulerj89.github.io/github-page/assets/portfolio-og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Josh Schuler portfolio — engineering leadership with a builder's feedback loop" />
+    <meta property="og:image:alt" content="Josh Schuler portfolio — reverse engineering and native game ports" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Josh Schuler — Engineering Leader &amp; Hands-on Builder" />
+    <meta name="twitter:title" content="Josh Schuler — Reverse Engineering &amp; Native Game Ports" />
     <meta
       name="twitter:description"
-      content="I turn ambiguous software problems into systems teams can ship—and own."
+      content="I reconstruct classic games as native C programs from disassembly, traces, and observed behavior."
     />
     <meta name="twitter:image" content="https://schulerj89.github.io/github-page/assets/portfolio-og.png" />
 
@@ -58,10 +58,13 @@
         "@type": "Person",
         "name": "Josh Schuler",
         "url": "https://schulerj89.github.io/github-page/",
-        "jobTitle": "Software Engineering Manager",
+        "jobTitle": "Software Engineering Manager and Reverse Engineer",
         "sameAs": ["https://github.com/schulerj89"],
         "knowsAbout": [
           "Engineering leadership",
+          "Reverse engineering",
+          "Native C game ports",
+          "Software preservation",
           "Software architecture",
           "TypeScript",
           "JavaScript",
@@ -84,7 +87,7 @@
           <span class="brand-mark" aria-hidden="true">JS</span>
           <span class="brand-copy">
             <strong>Josh Schuler</strong>
-            <span>Engineering leader + builder</span>
+            <span>Reverse engineer + builder</span>
           </span>
         </a>
 
@@ -122,21 +125,21 @@
       <section id="top" class="hero page-shell" data-section="top">
         <div class="hero-copy">
           <p class="eyebrow reveal">
-            <span>Software Engineering Manager</span>
-            <span>Hands-on builder</span>
+            <span>Reverse engineering</span>
+            <span>Native C ports</span>
           </p>
 
-          <h1 class="hero-title" aria-label="I turn ambiguity into systems teams can own.">
-            <span class="hero-line reveal" data-depth="0.18">I turn ambiguity</span>
-            <span class="hero-line reveal" data-depth="0.11">into systems</span>
-            <span class="hero-line hero-line-accent reveal" data-depth="0.04">teams can own.</span>
+          <h1 class="hero-title" aria-label="I rebuild classic games from the machine code up.">
+            <span class="hero-line reveal" data-depth="0.18">I rebuild classic games</span>
+            <span class="hero-line reveal" data-depth="0.11">from the machine code</span>
+            <span class="hero-line hero-line-accent reveal" data-depth="0.04">up.</span>
           </h1>
 
           <div class="hero-intro reveal">
             <p>
-              For 15+ years, I’ve led engineering teams and stayed close to the work—shaping
-              architecture, improving delivery, and building production systems, browser games,
-              and open-source contributions.
+              I reconstruct Game Boy and NES titles as native C programs using disassembly,
+              emulator traces, and deterministic comparison—without embedding an emulator or
+              distributing copyrighted game data.
             </p>
             <div class="hero-actions">
               <a class="button button-primary" href="#work">
@@ -178,9 +181,9 @@
 
         <div class="proof-rail reveal" role="list" aria-label="Portfolio highlights">
           <div role="listitem"><strong>15+</strong><span>years shipping software</span></div>
-          <div role="listitem"><strong>70</strong><span>programs in a full dynasty sim</span></div>
-          <div role="listitem"><strong>12</strong><span>hand-built stealth levels</span></div>
-          <div role="listitem"><strong>OSS</strong><span>Laravel framework + docs</span></div>
+          <div role="listitem"><strong>3</strong><span>native console-game ports</span></div>
+          <div role="listitem"><strong>C</strong><span>no embedded emulator</span></div>
+          <div role="listitem"><strong>OSS</strong><span>Laravel + PHP contributions</span></div>
         </div>
 
         <a class="scroll-cue" href="#work" aria-label="Scroll to selected work">
@@ -192,14 +195,14 @@
       <section id="work" class="section work-section" data-section="work">
         <div class="section-intro page-shell reveal">
           <p class="section-index">01 / Selected work</p>
-          <h2>Built close enough to the details to make the tradeoffs real.</h2>
+          <h2>Preservation work grounded in code, traces, and reproducible evidence.</h2>
           <p>
-            I use side projects as a working lab for product judgment, architecture, testing,
-            performance, and the thousand small decisions between an idea and a release.
+            These ports recover original state machines, data layouts, presentation, and gameplay
+            behavior while keeping proprietary ROM data outside the public repositories.
           </p>
         </div>
 
-        <article id="campus-gridiron" class="case-study page-shell" data-step="1">
+        <article id="native-ports" class="case-study page-shell" data-step="1">
           <div class="case-visual-column">
             <div class="case-visual">
               <div class="case-frame">
@@ -209,81 +212,78 @@
                 </div>
                 <figure class="case-screen">
                   <img
-                    src="assets/campus-gridiron.webp"
-                    width="1440"
-                    height="980"
-                    alt="Campus Gridiron Dynasty dashboard showing a fictional college football program, ratings, matchup preview, and navigation"
+                    src="assets/tecmo-presents.png"
+                    width="1015"
+                    height="579"
+                    alt="Tecmo Basketball native port opening presentation"
                     decoding="async"
                   />
                   <span class="case-scanline" aria-hidden="true"></span>
                 </figure>
                 <div class="case-caption">
                   <span class="caption-index">01</span>
-                  <span class="caption-copy">A 20-year world that has to stay legible.</span>
+                  <span class="caption-copy">Original behavior, rebuilt as a native program.</span>
                 </div>
               </div>
               <dl class="case-metrics">
-                <div><dt>Simulation</dt><dd>20 seasons</dd></div>
-                <div><dt>World</dt><dd>70 programs</dd></div>
-                <div><dt>Roster</dt><dd>85 players / team</dd></div>
+                <div><dt>Platforms</dt><dd>Game Boy + NES</dd></div>
+                <div><dt>Runtime</dt><dd>Native C / Win32</dd></div>
+                <div><dt>Boundary</dt><dd>Source only</dd></div>
               </dl>
             </div>
           </div>
 
           <div class="case-story">
             <header class="case-heading reveal">
-              <p class="project-kicker">Simulation system · React + TypeScript</p>
-              <h3>Campus Gridiron Dynasty</h3>
+              <p class="project-kicker">Reverse engineering · C · Win32</p>
+              <h3>Native Game Porting</h3>
               <p class="case-lede">
-                A fictional college-football world with recruiting, coaching movement, awards,
-                budgets, bowls, playoffs, and twenty seasons of consequences.
+                Three source-level reconstructions that translate classic basketball games into
+                native programs while documenting exact, approximate, and unfinished behavior.
               </p>
               <div class="project-actions">
-                <a class="button button-primary" href="https://schulerj89.github.io/campus-gridiron-dynasty/" target="_blank" rel="noopener">
-                  Open the dynasty <span aria-hidden="true">↗</span>
+                <a class="button button-primary" href="https://github.com/schulerj89/all-star-challenge-c-port" target="_blank" rel="noopener">
+                  Explore the ports <span aria-hidden="true">↗</span>
                 </a>
-                <a class="text-link" href="https://github.com/schulerj89/campus-gridiron-dynasty" target="_blank" rel="noopener">
-                  View source <span aria-hidden="true">↗</span>
+                <a class="text-link" href="https://github.com/schulerj89/tecmo-basketball-port" target="_blank" rel="noopener">
+                  Tecmo source <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </header>
 
             <div class="story-steps">
-              <section class="story-step is-active" data-step="1" data-caption="A 20-year world that has to stay legible.">
+              <section class="story-step is-active" data-step="1" data-caption="Start with evidence, not assumptions.">
                 <span class="story-number">01</span>
                 <div>
-                  <p class="story-label">Frame</p>
-                  <h4>Make a deep simulation readable at a glance.</h4>
+                  <p class="story-label">Recover</p>
+                  <h4>Map the machine before rewriting it.</h4>
                   <p>
-                    A dynasty only works when thousands of moving parts still resolve into a clear
-                    next decision. The interface keeps the week, program, matchup, and long-term arc
-                    in view without flattening the depth.
+                    Bank-aware disassembly, Ghidra analysis, emulator traces, and targeted scripts
+                    identify routines, data tables, timing rules, and state transitions.
                   </p>
                 </div>
               </section>
 
-              <section class="story-step" data-step="2" data-caption="Depth comes from connected systems, not a pile of screens.">
+              <section class="story-step" data-step="2" data-caption="Translate behavior into legible native systems.">
                 <span class="story-number">02</span>
                 <div>
-                  <p class="story-label">Build</p>
-                  <h4>Connect the systems so choices carry forward.</h4>
+                  <p class="story-label">Translate</p>
+                  <h4>Rebuild the behavior, not the hardware.</h4>
                   <p>
-                    Seventy programs, 85-player rosters, recruiting classes, hidden traits,
-                    coaching changes, budgets, rankings, awards, bowls, and an eight-team playoff
-                    all evolve inside one persistent save.
+                    Original state machines and fixed-point rules become maintainable C and Win32
+                    systems. The runtime does not contain a console emulator or read the ROM.
                   </p>
                 </div>
               </section>
 
-              <section class="story-step" data-step="3" data-caption="Fixed seeds turn a sprawling sim into repeatable proof.">
+              <section class="story-step" data-step="3" data-caption="Parity claims stay bounded and reproducible.">
                 <span class="story-number">03</span>
                 <div>
                   <p class="story-label">Verify</p>
-                  <h4>Test the long loop, not just the happy path.</h4>
+                  <h4>Compare every claim against evidence.</h4>
                   <p>
-                    Simulation-heavy tests run alongside repeatable browser smoke checks across
-                    Chromium, WebKit, and an iPhone profile—forcing playoffs, awards, recruiting,
-                    and multiple seasons so regressions surface before release.
+                    Deterministic tests, reference captures, trace comparisons, and machine-readable
+                    coverage gates separate verified parity from native approximations and open work.
                   </p>
                 </div>
               </section>
@@ -293,42 +293,33 @@
 
         <div class="projects-block page-shell">
           <div class="projects-heading reveal">
-            <p class="section-index">02 / More systems</p>
-            <h3>Different surfaces. Same ownership.</h3>
+            <p class="section-index">02 / Porting projects</p>
+            <h3>Three games. One evidence-led method.</h3>
           </div>
 
           <div class="project-grid">
             <article class="project-card project-card-wide reveal">
-              <a class="project-media" href="https://schulerj89.github.io/sneak-game/" target="_blank" rel="noopener" aria-label="Play Shadow Circuit">
-                <img
-                  class="parallax-media"
-                  src="assets/shadow-circuit.webp"
-                  width="1440"
-                  height="900"
-                  loading="lazy"
-                  decoding="async"
-                  alt="Shadow Circuit stealth level with patrol enemies, light cones, keycards, and terminals"
-                />
-                <span class="media-label">Playable / 12 levels</span>
+              <a class="oss-field" href="https://github.com/schulerj89/all-star-challenge-c-port" target="_blank" rel="noopener" aria-label="View the NBA All-Star Challenge native port source">
+                <span class="oss-word port-word">ALL-STAR</span>
+                <span class="oss-mark">GB→C</span>
+                <span class="oss-line"></span>
               </a>
               <div class="project-body">
                 <div class="project-title-row">
-                  <p class="project-kicker">Three.js stealth game</p>
+                  <p class="project-kicker">Game Boy reverse engineering</p>
                   <span>2026</span>
                 </div>
-                <h4>Shadow Circuit</h4>
+                <h4>NBA All-Star Challenge Native Port</h4>
                 <p>
-                  Read patrol sightlines, collect gated objectives, and clear twelve dark sci-fi
-                  levels. Built with level validation, desktop and mobile controls, browser smoke
-                  tests, and repeatable screenshot tooling.
+                  A native C reconstruction with bank-aware Ghidra analysis, deterministic parity
+                  manifests, ROM-derived local asset packs, and five playable basketball modes.
                 </p>
                 <div class="project-footer">
-                  <ul class="tag-list" aria-label="Shadow Circuit technologies">
-                    <li>Three.js</li><li>TypeScript</li><li>Vite</li>
+                  <ul class="tag-list" aria-label="All-Star Challenge port technologies">
+                    <li>C</li><li>Ghidra</li><li>Win32</li>
                   </ul>
                   <div class="inline-links">
-                    <a href="https://schulerj89.github.io/sneak-game/" target="_blank" rel="noopener">Play <span aria-hidden="true">↗</span></a>
-                    <a href="https://github.com/schulerj89/sneak-game" target="_blank" rel="noopener">Source <span aria-hidden="true">↗</span></a>
+                    <a href="https://github.com/schulerj89/all-star-challenge-c-port" target="_blank" rel="noopener">Source <span aria-hidden="true">↗</span></a>
                   </div>
                 </div>
               </div>
@@ -354,9 +345,9 @@
                 </div>
                 <h4>Tecmo Basketball Native Port</h4>
                 <p>
-                  A clean-room native C port workspace built from verified behavior, with strict
-                  boundaries that keep original game data and copyrighted assets outside the
-                  public repository.
+                  A playable native C reconstruction spanning opening presentation, menus,
+                  seasons, team data, and live ten-player court systems while the original CPU
+                  playbook and assignment logic are progressively recovered.
                 </p>
                 <div class="project-footer">
                   <ul class="tag-list" aria-label="Tecmo port technologies"><li>C</li><li>Native</li><li>Tests</li></ul>
@@ -367,30 +358,26 @@
               </div>
             </article>
 
-            <article class="project-card project-card-tall orbit-card reveal">
-              <a class="orbit-visual" href="https://schulerj89.github.io/orbit-janitor/" target="_blank" rel="noopener" aria-label="Play Orbit Janitor">
-                <span class="orbit-core" aria-hidden="true"></span>
-                <span class="orbit-line orbit-line-one" aria-hidden="true"><i></i></span>
-                <span class="orbit-line orbit-line-two" aria-hidden="true"><i></i></span>
-                <span class="orbit-line orbit-line-three" aria-hidden="true"><i></i></span>
-                <span class="orbit-copy"><strong>ORBIT</strong><em>JANITOR</em></span>
-                <span class="media-label">Playable / procedural arcade</span>
+            <article class="project-card project-card-tall reveal">
+              <a class="oss-field" href="https://github.com/schulerj89/double-dribble-c-port" target="_blank" rel="noopener" aria-label="View the Double Dribble native port source">
+                <span class="oss-word port-word">DOUBLE<br />DRIBBLE</span>
+                <span class="oss-mark">NES→C</span>
+                <span class="oss-line"></span>
               </a>
               <div class="project-body">
                 <div class="project-title-row">
-                  <p class="project-kicker">Procedural arcade game</p>
+                  <p class="project-kicker">NES reverse engineering</p>
                   <span>2026</span>
                 </div>
-                <h4>Orbit Janitor</h4>
+                <h4>Double Dribble Native Port</h4>
                 <p>
-                  Clean orbital lanes without losing momentum: switch lanes, chain pickups,
-                  manage boost fuel, read hazard telegraphs, and survive procedural sector missions.
+                  A source-only native C port recovering presentation, audio, tip-off, possession,
+                  shooting, scoring, inbounds, and free throws from traces and disassembly.
                 </p>
                 <div class="project-footer">
-                  <ul class="tag-list" aria-label="Orbit Janitor technologies"><li>Three.js</li><li>TypeScript</li><li>Procedural</li></ul>
+                  <ul class="tag-list" aria-label="Double Dribble port technologies"><li>C</li><li>6502</li><li>Win32</li></ul>
                   <div class="inline-links">
-                    <a href="https://schulerj89.github.io/orbit-janitor/" target="_blank" rel="noopener">Play <span aria-hidden="true">↗</span></a>
-                    <a href="https://github.com/schulerj89/orbit-janitor" target="_blank" rel="noopener">Source <span aria-hidden="true">↗</span></a>
+                    <a href="https://github.com/schulerj89/double-dribble-c-port" target="_blank" rel="noopener">Source <span aria-hidden="true">↗</span></a>
                   </div>
                 </div>
               </div>
@@ -423,11 +410,11 @@
           </div>
 
           <div class="more-work reveal">
-            <p>More from the lab</p>
+            <p>Broader engineering work</p>
             <div class="more-work-links">
-              <a href="https://schulerj89.github.io/tictactoe/" target="_blank" rel="noopener"><span>Tic Tac Toe</span><small>AI game ↗</small></a>
-              <a href="https://github.com/schulerj89/sigil-breaker" target="_blank" rel="noopener"><span>Sigil Breaker</span><small>FPS foundation / WIP ↗</small></a>
-              <a href="https://github.com/schulerj89/formula-js" target="_blank" rel="noopener"><span>Formula JS</span><small>TypeScript ↗</small></a>
+              <a href="https://github.com/schulerj89/campus-gridiron-dynasty" target="_blank" rel="noopener"><span>Campus Gridiron Dynasty</span><small>Simulation ↗</small></a>
+              <a href="https://github.com/laravel/framework/pulls?q=is%3Apr+author%3Aschulerj89" target="_blank" rel="noopener"><span>Laravel Contributions</span><small>Open source ↗</small></a>
+              <a href="https://github.com/php/doc-en/pull/3135" target="_blank" rel="noopener"><span>PHP Documentation</span><small>Open source ↗</small></a>
               <a href="https://github.com/schulerj89" target="_blank" rel="noopener"><span>All repositories</span><small>GitHub ↗</small></a>
             </div>
           </div>
@@ -483,18 +470,18 @@
             </p>
             <p>
               I’ve spent 15+ years shipping production software and leading engineering teams.
-              Games and experiments keep my feedback loop honest—they force product choices,
-              performance budgets, edge cases, and release discipline into the same small space.
+              Reverse-engineering ports keep my feedback loop honest: they force precise reasoning,
+              explicit evidence, low-level systems work, and clear statements about what is known.
             </p>
             <p>
-              AI is one tool in that loop. I use it to accelerate exploration and implementation,
-              then review, test, and reshape the result until it is work I’m prepared to maintain.
+              I also contribute upstream to Laravel and PHP documentation and build simulation,
+              developer-tooling, and interactive projects across C, TypeScript, Go, and Rust.
             </p>
           </div>
           <div class="capability-grid reveal" role="list" aria-label="Core focus areas">
             <div role="listitem"><span>01</span><strong>Engineering leadership</strong><small>Plans, systems, delivery</small></div>
             <div role="listitem"><span>02</span><strong>Product-minded architecture</strong><small>Clear tradeoffs, durable code</small></div>
-            <div role="listitem"><span>03</span><strong>Hands-on development</strong><small>TypeScript, JavaScript, APIs</small></div>
+            <div role="listitem"><span>03</span><strong>Hands-on development</strong><small>C, TypeScript, Go, Rust</small></div>
             <div role="listitem"><span>04</span><strong>Evidence-led quality</strong><small>Tests, screenshots, telemetry</small></div>
           </div>
         </div>
@@ -504,15 +491,15 @@
         <div class="contact-inner page-shell">
           <p class="section-index reveal">05 / Next</p>
           <div class="contact-layout">
-            <h2 class="reveal">Take the work for a spin—or inspect how it was built.</h2>
+            <h2 class="reveal">Inspect the evidence, boundaries, and source behind each port.</h2>
             <div class="contact-copy reveal">
-              <p>Every featured project is public. Start with the source, or jump directly into the most complete simulation.</p>
+              <p>Every featured repository documents its verified coverage, remaining gaps, build path, and separation from user-owned game data.</p>
               <div class="contact-links">
                 <a href="https://github.com/schulerj89" target="_blank" rel="noopener">
                   <span>Inspect</span><strong>GitHub</strong><i aria-hidden="true">↗</i>
                 </a>
-                <a href="https://schulerj89.github.io/campus-gridiron-dynasty/" target="_blank" rel="noopener">
-                  <span>Experience</span><strong>Featured build</strong><i aria-hidden="true">↗</i>
+                <a href="https://github.com/schulerj89/all-star-challenge-c-port" target="_blank" rel="noopener">
+                  <span>Start here</span><strong>All-Star port</strong><i aria-hidden="true">↗</i>
                 </a>
               </div>
             </div>
@@ -525,7 +512,7 @@
       <div class="footer-inner page-shell">
         <div>
           <strong>Josh Schuler</strong>
-          <span>Software Engineering Manager + hands-on builder</span>
+          <span>Reverse engineer + engineering leader</span>
         </div>
         <p>Designed around a simple loop: frame, build, verify, ship.</p>
         <div class="footer-meta">
