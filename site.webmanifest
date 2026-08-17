@@ -1,7 +1,7 @@
 {
-  "name": "Josh Schuler — Engineering Leader & Hands-on Builder",
+  "name": "Josh Schuler — Reverse Engineering & Native Game Ports",
   "short_name": "Josh Schuler",
-  "description": "Engineering leadership with a builder's feedback loop.",
+  "description": "Classic console games reconstructed as native C programs from disassembly, traces, and observed behavior.",
   "start_url": "/github-page/",
   "display": "standalone",
   "background_color": "#0b0d0c",
