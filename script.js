@@ -259,7 +259,6 @@
 
   safeFeature("pointer depth", () => {
     if (!state.pointerFine) return;
-    const loop = document.getElementById("loopVisual");
     let pointerX = window.innerWidth * 0.68;
     let pointerY = window.innerHeight * 0.18;
 
@@ -276,26 +275,6 @@
       if (!state.pointerFrame) state.pointerFrame = window.requestAnimationFrame(updatePointer);
     }, { passive: true });
 
-    loop?.addEventListener("pointermove", (event) => {
-      if (!state.motionEnabled) return;
-      const rect = loop.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-      loop.style.setProperty("--loop-rotate-x", `${(-y * 6).toFixed(2)}deg`);
-      loop.style.setProperty("--loop-rotate-y", `${(x * 6).toFixed(2)}deg`);
-    }, { passive: true });
-
-    loop?.addEventListener("pointerleave", () => {
-      loop.style.setProperty("--loop-rotate-x", "0deg");
-      loop.style.setProperty("--loop-rotate-y", "0deg");
-    });
-
-    window.addEventListener("portfolio:motionchange", (event) => {
-      if (!event.detail) {
-        loop?.style.setProperty("--loop-rotate-x", "0deg");
-        loop?.style.setProperty("--loop-rotate-y", "0deg");
-      }
-    });
   });
 
   safeFeature("active navigation", () => {
