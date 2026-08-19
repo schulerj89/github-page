@@ -461,7 +461,6 @@ html:not(.js) .menu-toggle {
 .section-index,
 .project-kicker,
 .story-label,
-.loop-meta,
 .media-label {
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -490,7 +489,7 @@ html:not(.js) .menu-toggle {
 }
 
 .hero-copy {
-  grid-column: 1 / span 8;
+  grid-column: 1 / span 10;
   align-self: center;
   padding-bottom: clamp(40px, 7vh, 86px);
 }
@@ -610,148 +609,6 @@ html:not(.js) .menu-toggle {
 .inline-links a:hover {
   color: var(--signal);
   text-decoration-color: currentColor;
-}
-
-.loop-panel {
-  position: relative;
-  grid-column: 9 / -1;
-  align-self: center;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 18px 0 22px;
-}
-
-.loop-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  color: var(--muted);
-  font-size: 0.59rem;
-}
-
-.loop-visual {
-  position: relative;
-  width: min(100%, 430px);
-  aspect-ratio: 1;
-  margin: 4px auto 0;
-  transform: perspective(900px) rotateX(var(--loop-rotate-x, 0deg)) rotateY(var(--loop-rotate-y, 0deg));
-  transform-style: preserve-3d;
-  transition: transform 180ms ease-out;
-}
-
-.loop-ring,
-.loop-sweep {
-  position: absolute;
-  border-radius: 50%;
-}
-
-.loop-ring-outer {
-  inset: 12%;
-  border: 1px solid var(--line-strong);
-}
-
-.loop-ring-outer::before,
-.loop-ring-outer::after {
-  position: absolute;
-  inset: -7px 50% auto;
-  width: 13px;
-  height: 13px;
-  border: 2px solid var(--bg);
-  border-radius: 50%;
-  background: var(--signal);
-  content: "";
-}
-
-.loop-ring-outer::after {
-  inset: auto 50% -7px;
-  background: var(--blue);
-}
-
-.loop-ring-inner {
-  inset: 27%;
-  border: 1px dashed var(--line-strong);
-}
-
-.loop-sweep {
-  inset: 12%;
-  background: conic-gradient(from 2deg, var(--signal-line) 0deg, transparent 34deg 360deg);
-  -webkit-mask: radial-gradient(transparent 64%, black 65% 68%, transparent 69%);
-  mask: radial-gradient(transparent 64%, black 65% 68%, transparent 69%);
-  animation: loop-sweep 14s linear infinite;
-}
-
-@keyframes loop-sweep {
-  to { transform: rotate(1turn); }
-}
-
-.loop-center {
-  position: absolute;
-  inset: 35%;
-  display: grid;
-  place-content: center;
-  border: 1px solid var(--signal-line);
-  border-radius: 50%;
-  background: var(--signal-soft);
-  text-align: center;
-  box-shadow: 0 0 70px var(--signal-soft);
-}
-
-.loop-center strong {
-  color: var(--text-strong);
-  font-size: clamp(1.9rem, 3vw, 3.1rem);
-  font-weight: 600;
-  letter-spacing: -0.08em;
-  line-height: 0.9;
-}
-
-.loop-center span {
-  margin-top: 8px;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: clamp(0.46rem, 0.65vw, 0.59rem);
-  letter-spacing: 0.06em;
-  line-height: 1.35;
-  text-transform: uppercase;
-}
-
-.loop-nodes {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.loop-node {
-  position: absolute;
-  display: grid;
-  min-width: 82px;
-  border-left: 1px solid var(--signal-line);
-  padding-left: 9px;
-  line-height: 1.1;
-}
-
-.loop-node span {
-  color: var(--signal);
-  font-family: var(--font-mono);
-  font-size: 0.54rem;
-}
-
-.loop-node strong {
-  margin-top: 5px;
-  color: var(--text-strong);
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.node-frame { top: 8%; left: 13%; }
-.node-build { top: 17%; right: 1%; }
-.node-verify { right: 7%; bottom: 11%; }
-.node-ship { bottom: 4%; left: 8%; }
-
-.loop-caption {
-  max-width: 42ch;
-  color: var(--muted);
-  font-size: 0.85rem;
-  line-height: 1.55;
 }
 
 .proof-rail {
@@ -1829,8 +1686,7 @@ html:not(.js) .menu-toggle {
 .js.motion-ok .hero-title .reveal:nth-child(3) { transition-delay: 160ms; }
 
 @media (max-width: 1220px) {
-  .hero-copy { grid-column: 1 / span 7; }
-  .loop-panel { grid-column: 8 / -1; }
+  .hero-copy { grid-column: 1 / span 10; }
   .hero-title { font-size: clamp(4rem, 7.1vw, 6.4rem); }
   .hero-intro { grid-template-columns: 1fr; gap: 22px; }
   .case-study { grid-template-columns: minmax(0, 6.8fr) minmax(330px, 5.2fr); gap: 48px; }
@@ -1847,20 +1703,9 @@ html:not(.js) .menu-toggle {
   }
 
   .hero-copy {
-    grid-column: 1 / span 6;
+    grid-column: 1 / span 8;
     padding-bottom: 70px;
   }
-
-  .loop-panel {
-    grid-column: 6 / -1;
-    grid-row: 1;
-    align-self: end;
-    margin-bottom: 80px;
-  }
-
-  .loop-meta,
-  .loop-caption { display: none; }
-  .loop-visual { width: min(100%, 350px); }
   .proof-rail { grid-column: 1 / -1; }
 
   .section-intro .section-index { grid-column: 1 / span 3; }
@@ -2009,18 +1854,6 @@ html:not(.js) .menu-toggle {
   .hero-intro { margin-top: 34px; }
   .hero-intro > p { font-size: 1rem; }
 
-  .loop-panel {
-    grid-column: 1;
-    grid-row: auto;
-    margin: 0 0 58px;
-    padding-block: 8px;
-  }
-
-  .loop-meta,
-  .loop-caption { display: flex; }
-  .loop-caption { display: block; margin-top: -12px; padding-bottom: 14px; }
-  .loop-visual { width: min(100%, 390px); }
-
   .proof-rail {
     grid-column: 1;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2134,9 +1967,6 @@ html:not(.js) .menu-toggle {
     padding-bottom: 42px;
   }
 
-  .loop-panel {
-    margin-bottom: 38px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -2151,13 +1981,6 @@ html:not(.js) .menu-toggle {
   .hero-actions { align-items: start; flex-direction: column; }
   .button { width: 100%; }
   .hero-actions .text-link { padding-left: 4px; }
-
-  .loop-node { min-width: 68px; }
-  .node-frame { left: 5%; }
-  .node-build { right: -2%; }
-  .node-verify { right: 0; }
-  .node-ship { left: 2%; }
-  .loop-caption { max-width: 35ch; }
 
   .case-frame-bar { padding-inline: 12px; }
   .case-screen { aspect-ratio: 1.05; }
@@ -2188,7 +2011,6 @@ html:not(.js) .menu-toggle {
   .contact-links a { grid-template-columns: 62px 1fr auto; }
 }
 
-.motion-off .loop-sweep,
 .motion-off .case-scanline,
 .motion-off .scroll-cue i::after,
 .motion-off .orbit-line,
@@ -2198,16 +2020,14 @@ html:not(.js) .menu-toggle {
 }
 
 .motion-off .project-media img,
-.motion-off .hero-line,
-.motion-off .loop-visual {
+.motion-off .hero-line {
   transform: none !important;
 }
 
 @media (forced-colors: active) {
   .button-primary,
   .contact-section,
-  .brand-mark,
-  .loop-center {
+  .brand-mark {
     forced-color-adjust: auto;
   }
 
@@ -2242,8 +2062,7 @@ html:not(.js) .menu-toggle {
 
   .hero-line,
   .project-media img,
-  .case-screen img,
-  .loop-visual {
+  .case-screen img {
     transform: none !important;
   }
 
