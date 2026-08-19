@@ -182,7 +182,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { rootMargin: "0px 0px -8%", threshold: 0.08 });
+    }, { rootMargin: "180px 0px", threshold: 0.01 });
 
     elements.forEach((element) => {
       const rect = element.getBoundingClientRect();
