@@ -329,13 +329,11 @@ a:focus-visible {
 }
 
 html:not(.js) .theme-toggle,
-html:not(.js) .motion-toggle,
 html:not(.js) .menu-toggle {
   display: none;
 }
 
 .theme-toggle,
-.motion-toggle,
 .menu-toggle {
   display: inline-flex;
   min-height: 44px;
@@ -348,14 +346,12 @@ html:not(.js) .menu-toggle {
   cursor: pointer;
 }
 
-.theme-toggle,
-.motion-toggle {
+.theme-toggle {
   gap: 9px;
   padding: 0 15px;
 }
 
 .theme-toggle:hover,
-.motion-toggle:hover,
 .menu-toggle:hover {
   border-color: var(--line-strong);
   background: var(--signal-soft);
@@ -369,58 +365,7 @@ html:not(.js) .menu-toggle {
   box-shadow: 0 0 0 4px var(--signal-soft);
 }
 
-.motion-icon {
-  position: relative;
-  display: inline-grid;
-  width: 14px;
-  height: 14px;
-  place-items: center;
-  border: 1px solid var(--signal-line);
-  border-radius: 50%;
-}
-
-.motion-icon::before,
-.motion-icon i {
-  position: absolute;
-  border-radius: 50%;
-  content: "";
-}
-
-.motion-icon::before {
-  inset: 3px;
-  border: 1px solid var(--signal);
-}
-
-.motion-icon i {
-  top: -2px;
-  width: 4px;
-  height: 4px;
-  background: var(--signal);
-  transform-origin: 2px 9px;
-  animation: motion-orbit 2.8s linear infinite;
-}
-
-@keyframes motion-orbit {
-  to { transform: rotate(1turn); }
-}
-
-.motion-toggle[aria-pressed="false"] .motion-icon {
-  border-style: dashed;
-  opacity: 0.65;
-}
-
-.motion-toggle[aria-pressed="false"] .motion-icon i {
-  animation: none;
-  transform: translateY(7px);
-}
-
-.motion-toggle:disabled {
-  cursor: not-allowed;
-  opacity: 0.58;
-}
-
 .theme-label,
-.motion-label,
 .menu-label {
   font-family: var(--font-mono);
   font-size: 0.68rem;
@@ -1761,10 +1706,8 @@ html:not(.js) .menu-toggle {
   body { font-size: 16px; }
 
   .brand-copy span { display: none; }
-  .theme-label,
-  .motion-label { display: none; }
-  .theme-toggle,
-  .motion-toggle { width: 44px; padding: 0; }
+  .theme-label { display: none; }
+  .theme-toggle { width: 44px; padding: 0; }
   .menu-toggle { display: inline-flex; }
 
   .site-nav {
@@ -1810,8 +1753,7 @@ html:not(.js) .menu-toggle {
   }
 
   html:not(.js) .menu-toggle,
-  html:not(.js) .theme-toggle,
-  html:not(.js) .motion-toggle {
+  html:not(.js) .theme-toggle {
     display: none;
   }
 
@@ -2014,7 +1956,6 @@ html:not(.js) .menu-toggle {
 .motion-off .case-scanline,
 .motion-off .scroll-cue i::after,
 .motion-off .orbit-line,
-.motion-off .motion-icon i,
 .page-hidden * {
   animation-play-state: paused !important;
 }
@@ -2033,15 +1974,13 @@ html:not(.js) .menu-toggle {
 
   .scroll-progress span,
   .case-status i,
-  .theme-dot,
-  .motion-icon i {
+  .theme-dot {
     background: Highlight;
   }
 
   .project-card,
   .case-frame,
   .theme-toggle,
-  .motion-toggle,
   .menu-toggle,
   .tag-list li {
     border-color: CanvasText;

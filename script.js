@@ -78,38 +78,16 @@
   });
 
   safeFeature("motion preference", () => {
-    const button = document.getElementById("motionToggle");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let savedMotion = readPreference("portfolio-motion");
 
-    function applyMotion(enabled, persist = false) {
-      state.motionEnabled = reducedMotion.matches ? false : Boolean(enabled);
+    function applyMotion() {
+      state.motionEnabled = !reducedMotion.matches;
       root.classList.toggle("motion-off", !state.motionEnabled);
-      if (button) {
-        button.setAttribute("aria-pressed", String(state.motionEnabled));
-        button.disabled = reducedMotion.matches;
-        button.setAttribute(
-          "aria-label",
-          reducedMotion.matches
-            ? "Motion reduced by system setting"
-            : `Turn motion ${state.motionEnabled ? "off" : "on"}`
-        );
-      }
-      if (persist && !reducedMotion.matches) {
-        savedMotion = state.motionEnabled ? "on" : "off";
-        writePreference("portfolio-motion", savedMotion);
-      }
       window.dispatchEvent(new CustomEvent("portfolio:motionchange", { detail: state.motionEnabled }));
     }
 
-    const initialMotion = reducedMotion.matches ? false : savedMotion === "on" ? true : savedMotion === "off" ? false : true;
-    applyMotion(initialMotion);
-
-    button?.addEventListener("click", () => applyMotion(!state.motionEnabled, true));
-    reducedMotion.addEventListener?.("change", (event) => {
-      if (event.matches) applyMotion(false);
-      else applyMotion(savedMotion === "on" ? true : savedMotion === "off" ? false : true);
-    });
+    applyMotion();
+    reducedMotion.addEventListener?.("change", applyMotion);
   });
 
   safeFeature("navigation", () => {
