@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-08-27 - v3.0.3
+
+- Added a seamless, gentle automatic console-strip loop while preserving native manual scrolling and the clean button-free appearance.
+- Touch, trackpad, and keyboard input take priority; automatic scrolling resumes after 3.5 seconds of inactivity. Mouse hover and keyboard focus pause it for reading.
+- Suspended the loop offscreen, in hidden tabs, and for reduced-motion preferences. Duplicate labels are hidden from assistive technology.
+- Added focused tests for timing, input takeover, momentum, resuming, wrapping, visibility, reduced motion, and resize.
+- Verified desktop/mobile appearance and browser-observed auto movement plus keyboard takeover; screenshots saved as `artifacts/platform-strip-auto-*-v3.0.3.jpg`.
+
 ## 2026-08-27 - v3.0.2
 
 - Restored the original clean console band: removed arrow buttons, the surrounding focus box, and visible scrollbar; restored the original vertical spacing.

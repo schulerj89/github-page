@@ -430,12 +430,15 @@ em {
 }
 .era-track {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 35px;
   width: max-content;
-  min-width: 100%;
   padding-inline: 20px;
+}
+.era-group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 35px;
+  padding-right: 35px;
   white-space: nowrap;
   font-family: var(--display);
   font-size: 34px;
@@ -1183,9 +1186,10 @@ h1 > em {
   .era-strip {
     padding-block: 13px;
   }
-  .era-track {
+  .era-group {
     font-size: 28px;
     gap: 24px;
+    padding-right: 24px;
   }
   .era-track .era-divider {
     font-size: 19px;

@@ -71,7 +71,7 @@ if (dialog && typeof dialog.showModal === "function") {
 document.getElementById("year").textContent = String(new Date().getFullYear());
 
 // Native scrolling stays in charge. Render at most once per scroll frame,
-// with smaller travel on phones and no perpetual animation loop.
+// with smaller hero travel on phones and no perpetual hero animation loop.
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const narrowViewport = window.matchMedia("(max-width: 900px)");
 const hero = document.querySelector(".hero");
@@ -173,3 +173,6 @@ window.addEventListener("load", scheduleScroll, { once: true });
 document.addEventListener("visibilitychange", scheduleScroll);
 document.fonts?.ready.then(scheduleScroll);
 scheduleScroll();
+if (platformScroller && typeof enhancePlatformStrip === "function") {
+  enhancePlatformStrip(platformScroller, reducedMotion);
+}

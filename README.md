@@ -12,7 +12,7 @@ Static, mobile-first portfolio: [schulerj89.github.io/github-page](https://schul
 
 ## Design and interactions
 
-Retro-sports typography, authentic game frames, dark/orange/lime colors, layered hero parallax, a manually scrollable console strip, and project reveals. The strip supports touch, trackpad, and keyboard without automatic drift, buttons, visible scrollbars, or a surrounding box. Native browser scrolling is never intercepted. Mobile uses smaller motion distances. Reduced-motion preferences disable decorative movement; content and source links work without JavaScript. Galleries progressively enhance into an accessible native dialog.
+Retro-sports typography, authentic game frames, dark/orange/lime colors, layered hero parallax, an automatically looping console strip, and project reveals. The strip also supports native touch, trackpad, and keyboard scrolling, without buttons, visible scrollbars, or a surrounding box. Input pauses automatic motion; it resumes after 3.5 seconds of inactivity, unless hovered or keyboard-focused. Offscreen, hidden-tab, and reduced-motion states stop the loop. Mobile uses smaller hero parallax distances. Content and source links work without JavaScript. Galleries progressively enhance into an accessible native dialog.
 
 See [DESIGN_PLAN.md](DESIGN_PLAN.md) for rationale and [assets/SOURCES.md](assets/SOURCES.md) for image provenance. No ROMs or extracted game asset packs are hosted.
 
@@ -21,6 +21,7 @@ See [DESIGN_PLAN.md](DESIGN_PLAN.md) for rationale and [assets/SOURCES.md](asset
 ```powershell
 python -m http.server 8765 --bind 127.0.0.1
 node tools/check_site.mjs
+node tools/check_platform_strip.mjs
 node --check script.js
 git diff --check
 ```

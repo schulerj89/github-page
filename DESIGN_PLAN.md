@@ -12,17 +12,17 @@ NBA Live 95 and NBA Live 97 lead. All-Star Challenge is complete within its docu
 
 ## Motion and mobile
 
-- Native scroll; no wheel/touch interception, scroll library, video, WebGL, or perpetual animation loop.
-- One requested animation frame per scroll/resize update, limited to transforms and a progress line.
-- Offscreen hero work is suspended with IntersectionObserver; hidden documents skip visual motion. The console strip scrolls manually via touch, trackpad, or keyboard; no transform competes with user input. It retains its original uninterrupted-band appearance, without buttons, visible scrollbars, or a focus rectangle; keyboard focus uses a text underline instead.
+- Native scroll; no wheel/touch interception, scroll library, video, or WebGL. Hero effects request one frame per scroll/resize update.
+- The console band loops at 26px/second using native scroll position and repeated label groups, not competing transforms. It only animates while visible, with hidden tabs and reduced-motion preferences stopping the loop.
+- Manual touch/trackpad input pauses the loop until 3.5 seconds after movement settles. Mouse hover and keyboard focus also pause it. It retains its original uninterrupted-band appearance, without buttons, visible scrollbars, or a focus rectangle; keyboard focus uses a text underline instead.
 - At 900px and below, projects and hero stack; parallax is reduced to 35% travel.
-- Anchor links jump directly and predictably. Reduced motion disables parallax, reveals, and transitions, including preference changes while the page is open.
+- Anchor links jump directly and predictably. Reduced motion disables automatic strip scrolling, parallax, reveals, and transitions, including preference changes while the page is open.
 - No-JavaScript content stays visible. Galleries become plain image links. Links and primary controls have visible keyboard focus and at least 44px height.
 - Screenshot dialog uses native focus containment, Escape dismissal, explicit close, backdrop dismissal, and focus restoration.
 - Entire screenshot frames are preserved, with labels distinguishing native builds from original-game references.
 
 ## Verification
 
-Check 320px and 390px phones, 768px tablet, and 1440px desktop; inspect headings, image loading, overflow, project links, gallery switching, dialog focus, completion details, and motion. The dependency-free `tools/check_site.mjs` checks source assets, anchors, metadata, contrast pairs, motion scheduling/clamping, mobile intensity, and reduced-motion fallbacks.
+Check 320px and 390px phones, 768px tablet, and 1440px desktop; inspect headings, image loading, overflow, project links, gallery switching, dialog focus, completion details, and motion. The dependency-free `tools/check_site.mjs` checks source assets, anchors, metadata, contrast pairs, hero scheduling/clamping, mobile intensity, and reduced-motion fallbacks. `tools/check_platform_strip.mjs` verifies the automatic loop and manual interaction timing independently.
 
 Keep desktop/mobile visual evidence in `artifacts/`. Confirm GitHub Pages after push. Do not present simulated viewport tests as physical-device testing or claim measured Core Web Vitals without a field measurement.
