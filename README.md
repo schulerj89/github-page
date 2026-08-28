@@ -1,55 +1,34 @@
-# Josh Schuler Portfolio
+# Josh Schuler — Old School. New Code.
 
-Static GitHub Pages portfolio for Josh Schuler (`@schulerj89`).
-
-## Live site
-
-<https://schulerj89.github.io/github-page/>
-
-## Portfolio focus
-
-The portfolio foregrounds reverse engineering and source-level preservation while retaining the four-part engineering loop: **Frame → Build → Verify → Ship**.
-
-- Editorial, evidence-led visual direction with real project captures.
-- Sticky native-porting case study on desktop and normal document flow on mobile.
-- Selected work across three native C ports plus Laravel and PHP open-source contributions.
-- Native scrolling with restrained pointer depth, image parallax, active-section navigation, and scroll progress.
-- Persisted dark/light themes with theme-specific accessible colors.
-- Persisted Motion control plus `prefers-reduced-motion`, coarse-pointer, narrow-screen, offscreen, and hidden-tab fallbacks.
-- Fully visible content and navigation when JavaScript is unavailable.
-- Responsive layouts from 320px phones through wide desktop displays.
-- Canonical, Open Graph, X card, JSON-LD, manifest, icon, sitemap, and robots metadata.
-
-The implementation plan and design standards are documented in [`DESIGN_PLAN.md`](DESIGN_PLAN.md).
+Static, mobile-first portfolio: [schulerj89.github.io/github-page](https://schulerj89.github.io/github-page/).
 
 ## Featured work
 
-- [NBA All-Star Challenge Native Port](https://github.com/schulerj89/all-star-challenge-c-port) — Game Boy behavior reconstructed in native C.
-- [Double Dribble Native Port](https://github.com/schulerj89/double-dribble-c-port) — NES behavior reconstructed in native C.
-- [Tecmo Basketball Native Port](https://github.com/schulerj89/tecmo-basketball-port) — playable NES-to-native-C reconstruction.
-- Selected [Laravel framework](https://github.com/laravel/framework/pull/53109), [Laravel documentation](https://github.com/laravel/docs/pull/8123), and [PHP documentation](https://github.com/php/doc-en/pull/3135) contributions.
+1. [NBA Live 95](https://github.com/schulerj89/nba-live-95-c-port) — SNES to native C99; in development.
+2. [NBA Live 97](https://github.com/schulerj89/nba-live-97-c-port) — PS1 frontend reconstruction in recovered C with a C++ host; no playable basketball yet.
+3. [NBA All-Star Challenge](https://github.com/schulerj89/all-star-challenge-c-port) — completed single-player behavioral port; completion scope is disclosed on the page.
+4. [Double Dribble](https://github.com/schulerj89/double-dribble-c-port) and [Tecmo Basketball](https://github.com/schulerj89/tecmo-basketball-port).
+5. Four merged Laravel/PHP contributions, preserved in their own section.
 
-## Local preview
+## Design and interactions
+
+Retro-sports typography, authentic game frames, dark/orange/lime colors, layered hero parallax, a scroll-linked console strip, and project reveals. Native browser scrolling is never intercepted. Mobile uses smaller motion distances. Reduced-motion preferences disable movement; content and source links work without JavaScript. Galleries progressively enhance into an accessible native dialog.
+
+See [DESIGN_PLAN.md](DESIGN_PLAN.md) for rationale and [assets/SOURCES.md](assets/SOURCES.md) for image provenance. No ROMs or extracted game asset packs are hosted.
+
+## Preview and verify
 
 ```powershell
-python -m http.server 8080
+python -m http.server 8765 --bind 127.0.0.1
+node tools/check_site.mjs
+node --check script.js
+git diff --check
 ```
 
-Then open `http://127.0.0.1:8080/`.
+Open `http://127.0.0.1:8765/`. There is no build step or runtime dependency. Google Fonts have local system-font fallbacks. `tools/prepare_images.py` optionally reproduces the lossless WebP images from local sibling game-port checkouts using Pillow; it is not needed for deployment.
 
-## Verification artifacts
-
-- `artifacts/portfolio-desktop-v2.png`
-- `artifacts/portfolio-mobile-v2.png`
-- `artifacts/portfolio-mobile-light-v2.png`
-- `artifacts/portfolio-case-study-detail-v2.png`
-- `artifacts/portfolio-campus-polish-v2.0.1.png`
-- `artifacts/portfolio-tecmo-polish-v2.0.1.png`
-- `artifacts/portfolio-approach-polish-v2.0.1.png`
-- `artifacts/portfolio-mobile-polish-v2.0.1.png`
-- `artifacts/portfolio-approach-mobile-polish-v2.0.1.png`
-- `assets/portfolio-og.png`
+Current visual evidence lives in `artifacts/portfolio-*-v3.png`; the social image is `assets/portfolio-preview.png`. Older artifacts remain as historical records.
 
 ## Deploy
 
-GitHub Pages publishes the repository root from `main`. A push to `main` triggers the built-in Pages deployment.
+GitHub Pages publishes the repository root from `main`. Push to `main`, then verify the built-in Pages deployment and the live URL.

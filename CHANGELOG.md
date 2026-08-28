@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-08-27 - v3.0.0
+
+- Rebuilt the site with a retro-sports visual direction: oversized condensed type, dark courtside colors, floating game screens, layered parallax, a scroll-linked console strip, and project reveals.
+- Prioritized NBA Live 95 (SNES C99) and NBA Live 97 (PlayStation recovered C/C++); marked All-Star Challenge complete with its single-player scope disclosed.
+- Retained Double Dribble, Tecmo Basketball, and four merged Laravel/PHP contributions.
+- Added five optimized, authentic game captures, interactive galleries, and a keyboard-accessible screenshot dialog. Native-build captures and original-game references are labeled separately.
+- Kept native touch scrolling, smaller mobile parallax, reduced-motion support, visible no-JavaScript content, and 44px primary controls.
+- Updated sharing metadata, screenshot provenance, verification tools, and desktop/mobile artifacts.
+
 ## 2026-07-10 - v2.0.1
 
 - Replaced the Tecmo Basketball Native Port preview with the supplied Tecmo Presents artwork.

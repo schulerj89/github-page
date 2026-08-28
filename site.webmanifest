@@ -4,8 +4,8 @@
   "description": "Classic console games reconstructed as native C programs from disassembly, traces, and observed behavior.",
   "start_url": "/github-page/",
   "display": "standalone",
-  "background_color": "#0b0d0c",
-  "theme_color": "#0b0d0c",
+  "background_color": "#0b0d10",
+  "theme_color": "#0b0d10",
   "icons": [
     {
       "src": "assets/icon-192.png",

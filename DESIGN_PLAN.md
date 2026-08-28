@@ -1,51 +1,28 @@
-# Portfolio Redesign Plan — The Build Loop
+# Portfolio v3 — Old School. New Code.
 
-## Product goal
+## Direction
 
-Present Josh Schuler as an engineering leader who can turn ambiguous problems into understandable, testable systems while staying close to product and implementation tradeoffs.
+The requested direction is cool, dynamic, and game-led, with parallax. The visual language borrows from basketball broadcast graphics and hardware-era game screens: oversized condensed headings, warm orange, lime, charcoal, angled capture frames, and subtle court geometry. Game imagery is real, not generated artwork masquerading as gameplay.
 
-## Design direction
+Research references: [Lusion](https://lusion.co/) for layered, immersive presentation and [Locomotive Scroll](https://scroll.locomotive.ca/) for scroll-linked depth and in-view behavior. These are direction references, not copied layouts or dependencies. The earlier minimalist/editorial direction was rejected and is not the final design.
 
-The portfolio uses an editorial systems language rather than a terminal-themed developer template: deep carbon and warm bone, a single signal-green accent, restrained technical annotations, large type, real project captures, and fewer boxed surfaces.
+## Content priority
 
-The page follows a four-part narrative:
+NBA Live 95 and NBA Live 97 lead. All-Star Challenge is complete within its documented single-player scope. Double Dribble and Tecmo retain visible source links. Upstream Laravel/PHP contributions remain a full section, followed by a concise biography.
 
-1. **Frame** the ambiguous problem.
-2. **Build** a legible system.
-3. **Verify** the complete loop with evidence.
-4. **Ship** something the team can own.
+## Motion and mobile
 
-## Content architecture
+- Native scroll; no wheel/touch interception, scroll library, video, WebGL, or perpetual animation loop.
+- One requested animation frame per scroll/resize update, limited to transforms and a progress line.
+- Offscreen hero/strip work is suspended with IntersectionObserver; hidden documents skip visual motion.
+- At 900px and below, projects and hero stack; parallax is reduced to 35% travel.
+- Anchor links jump directly and predictably. Reduced motion disables parallax, reveals, and transitions, including preference changes while the page is open.
+- No-JavaScript content stays visible. Galleries become plain image links. Links and primary controls have visible keyboard focus and at least 44px height.
+- Screenshot dialog uses native focus containment, Escape dismissal, explicit close, backdrop dismissal, and focus restoration.
+- Entire screenshot frames are preserved, with labels distinguishing native builds from original-game references.
 
-- Positioning-led hero with immediate GitHub and work paths.
-- Proof rail with concrete project scope.
-- Sticky Campus Gridiron Dynasty case study with real product evidence.
-- Selected builds spanning Three.js, native C, procedural systems, and open source.
-- Working approach and responsible AI stance.
-- Concise about and next-step sections with verified public links.
+## Verification
 
-## Interaction standards
+Check 320px and 390px phones, 768px tablet, and 1440px desktop; inspect headings, image loading, overflow, project links, gallery switching, dialog focus, completion details, and motion. The dependency-free `tools/check_site.mjs` checks source assets, anchors, metadata, contrast pairs, motion scheduling/clamping, mobile intensity, and reduced-motion fallbacks.
 
-- Preserve native browser scrolling; never hijack the wheel or touch gesture.
-- Use one coordinated animation frame for scroll progress and restrained parallax.
-- Keep travel distances small and transform/opacity-only.
-- Pause continuous motion offscreen or when the page is hidden.
-- Provide an explicit persisted Motion control.
-- Respect `prefers-reduced-motion` and remain fully usable without JavaScript.
-- Disable parallax on small screens and coarse pointers.
-
-## Mobile standards
-
-- Art-directed single-column layouts below 900px, including landscape phones and small tablets.
-- Minimum 44px interactive targets and safe-area-aware spacing.
-- Normal document flow replaces sticky storytelling.
-- Deliberate screenshot crops with fixed dimensions to prevent layout shift.
-- Keyboard-safe menu with focus transfer, Escape close, and breakpoint reset.
-
-## Quality targets
-
-- WCAG AA contrast in dark and light themes.
-- LCP at or below 2.5 seconds, INP at or below 200ms, and CLS below 0.1.
-- No critical console errors, broken internal links, horizontal overflow, or hidden no-JavaScript content.
-- Visual checks at 320, 390, 768, 1024, and 1440px plus reduced-motion and light-theme states.
-- GitHub Pages production verification after the final push.
+Keep desktop/mobile visual evidence in `artifacts/`. Confirm GitHub Pages after push. Do not present simulated viewport tests as physical-device testing or claim measured Core Web Vitals without a field measurement.

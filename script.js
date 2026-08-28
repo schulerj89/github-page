@@ -1,338 +1,170 @@
-(() => {
-  "use strict";
+"use strict";
 
-  const root = document.documentElement;
-  root.classList.add("js");
-  const state = {
-    motionEnabled: true,
-    pointerFine: window.matchMedia("(pointer: fine)").matches,
-    scrollFrame: 0,
-    pointerFrame: 0,
-  };
-
-  function safeFeature(name, initialize) {
-    try {
-      initialize();
-    } catch (error) {
-      console.warn(`[portfolio] ${name} enhancement unavailable`, error);
-    }
-  }
-
-  function readPreference(key) {
-    try {
-      return window.localStorage.getItem(key);
-    } catch (_error) {
-      return null;
-    }
-  }
-
-  function writePreference(key, value) {
-    try {
-      window.localStorage.setItem(key, value);
-    } catch (_error) {
-      // The interface remains usable when storage is restricted.
-    }
-  }
-
-  function clamp(min, max, value) {
-    return Math.min(max, Math.max(min, value));
-  }
-
-  safeFeature("year", () => {
-    const year = document.getElementById("year");
-    if (year) year.textContent = String(new Date().getFullYear());
-  });
-
-  safeFeature("theme", () => {
-    const button = document.getElementById("themeToggle");
-    const label = button?.querySelector(".theme-label");
-    const themeColor = document.getElementById("themeColor");
-    const systemTheme = window.matchMedia("(prefers-color-scheme: light)");
-    let savedTheme = readPreference("portfolio-theme");
-
-    function applyTheme(theme, persist = false) {
-      const nextTheme = theme === "light" ? "light" : "dark";
-      root.setAttribute("data-theme", nextTheme);
-      if (themeColor) themeColor.setAttribute("content", nextTheme === "light" ? "#f1efe7" : "#0b0d0c");
-      if (label) label.textContent = nextTheme === "light" ? "Dark" : "Light";
-      if (button) button.setAttribute("aria-label", `Switch to ${nextTheme === "light" ? "dark" : "light"} theme`);
-      if (persist) {
-        savedTheme = nextTheme;
-        writePreference("portfolio-theme", nextTheme);
-      }
-    }
-
-    const initialTheme = root.getAttribute("data-theme") === "light" ? "light" : "dark";
-    applyTheme(initialTheme);
-
-    button?.addEventListener("click", () => {
-      const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-      applyTheme(nextTheme, true);
+// The content and source links work without JavaScript. Only the galleries
+// and enlarged screenshot view are progressively enhanced.
+document.querySelectorAll("[data-gallery]").forEach((gallery) => {
+  const controls = gallery.querySelector(".gallery-controls");
+  if (!controls) return;
+  controls.hidden = false;
+  const image = gallery.querySelector("img");
+  const link = gallery.querySelector("[data-enlarge]");
+  const caption = gallery.querySelector("[data-image-caption]");
+  controls.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-src]");
+    if (!button) return;
+    controls.querySelectorAll("button").forEach((item) => {
+      item.setAttribute("aria-pressed", String(item === button));
     });
+    image.src = button.dataset.src;
+    image.alt = button.dataset.alt;
+    link.href = button.dataset.src;
+    link.dataset.caption = button.dataset.alt + " — " + button.dataset.caption;
+    link.setAttribute("aria-label", "Enlarge " + button.dataset.alt);
+    caption.textContent = button.dataset.caption;
+  });
+});
 
-    systemTheme.addEventListener?.("change", (event) => {
-      if (savedTheme !== "light" && savedTheme !== "dark") {
-        applyTheme(event.matches ? "light" : "dark");
-      }
+const dialog = document.getElementById("image-dialog");
+const dialogImage = document.getElementById("dialog-image");
+const dialogCaption = document.getElementById("dialog-caption");
+let opener = null;
+
+if (dialog && typeof dialog.showModal === "function") {
+  document.querySelectorAll("[data-enlarge]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      // Preserve browser-native open-in-new-tab behavior.
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey)
+        return;
+      event.preventDefault();
+      opener = link;
+      dialogImage.src = link.href;
+      dialogImage.alt = link.querySelector("img").alt;
+      dialogCaption.textContent = link.dataset.caption;
+      dialog.showModal();
     });
   });
-
-  safeFeature("motion preference", () => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    function applyMotion() {
-      state.motionEnabled = !reducedMotion.matches;
-      root.classList.toggle("motion-off", !state.motionEnabled);
-      window.dispatchEvent(new CustomEvent("portfolio:motionchange", { detail: state.motionEnabled }));
+  dialog
+    .querySelector(".dialog-close")
+    .addEventListener("click", () => dialog.close());
+  dialog.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      dialog.close();
     }
-
-    applyMotion();
-    reducedMotion.addEventListener?.("change", applyMotion);
   });
-
-  safeFeature("navigation", () => {
-    const header = document.getElementById("siteHeader");
-    const nav = document.getElementById("siteNav");
-    const menuButton = document.getElementById("menuToggle");
-    const navLinks = Array.from(nav?.querySelectorAll("a") || []);
-
-    if (!header || !nav || !menuButton) return;
-
-    function closeMenu({ restoreFocus = false } = {}) {
-      nav.classList.remove("open");
-      menuButton.setAttribute("aria-expanded", "false");
-      document.body.classList.remove("menu-open");
-      if (restoreFocus) menuButton.focus();
-    }
-
-    function openMenu() {
-      nav.classList.add("open");
-      menuButton.setAttribute("aria-expanded", "true");
-      document.body.classList.add("menu-open");
-      window.requestAnimationFrame(() => navLinks[0]?.focus());
-    }
-
-    menuButton.addEventListener("click", () => {
-      if (nav.classList.contains("open")) closeMenu();
-      else openMenu();
-    });
-
-    nav.addEventListener("click", (event) => {
-      if (event.target instanceof HTMLAnchorElement) {
-        closeMenu({ restoreFocus: window.innerWidth <= 900 });
-      }
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && nav.classList.contains("open")) {
-        closeMenu({ restoreFocus: true });
-      }
-    });
-
-    document.addEventListener("pointerdown", (event) => {
-      if (nav.classList.contains("open") && event.target instanceof Node && !header.contains(event.target)) {
-        closeMenu();
-      }
-    });
-
-    document.addEventListener("focusin", (event) => {
-      if (nav.classList.contains("open") && event.target instanceof Node && !header.contains(event.target)) {
-        closeMenu();
-      }
-    });
-
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 900 && nav.classList.contains("open")) closeMenu();
-    }, { passive: true });
+  dialog.addEventListener("click", (event) => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom
+    )
+      dialog.close();
   });
+  dialog.addEventListener("close", () => {
+    opener?.focus();
+  });
+}
 
-  safeFeature("reveal", () => {
-    const elements = Array.from(document.querySelectorAll(".reveal"));
-    if (!elements.length || !("IntersectionObserver" in window)) {
-      elements.forEach((element) => element.classList.add("is-visible"));
-      return;
-    }
+document.getElementById("year").textContent = String(new Date().getFullYear());
 
-    const observer = new IntersectionObserver((entries) => {
+// Native scrolling stays in charge. Render at most once per scroll frame,
+// with smaller travel on phones and no perpetual animation loop.
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const narrowViewport = window.matchMedia("(max-width: 900px)");
+const hero = document.querySelector(".hero");
+const layers = [...document.querySelectorAll("[data-parallax]")];
+const drift = document.querySelector("[data-drift]");
+const strip = document.querySelector(".era-strip");
+const progress = document.querySelector(".scroll-progress");
+let framePending = false;
+let heroVisible = true;
+let stripVisible = true;
+
+function renderScroll() {
+  framePending = false;
+  const y = window.scrollY;
+  const range = document.documentElement.scrollHeight - window.innerHeight;
+  if (progress)
+    progress.style.transform = `scaleX(${range > 0 ? Math.min(1, Math.max(0, y / range)) : 0})`;
+  if (reducedMotion.matches || document.hidden) return;
+  const intensity = narrowViewport.matches ? 0.35 : 1;
+  if (heroVisible) {
+    layers.forEach((layer) => {
+      const offset = Math.max(
+        -90,
+        Math.min(90, y * Number(layer.dataset.parallax) * intensity),
+      );
+      layer.style.setProperty("--parallax-y", `${offset.toFixed(1)}px`);
+    });
+  }
+  if (stripVisible && drift && strip) {
+    const offset =
+      (window.innerHeight - strip.getBoundingClientRect().top) *
+      0.18 *
+      intensity;
+    drift.style.setProperty("--drift-x", `${-40 - offset}px`);
+  }
+}
+
+function scheduleScroll() {
+  if (!framePending) {
+    framePending = true;
+    window.requestAnimationFrame(renderScroll);
+  }
+}
+
+if ("IntersectionObserver" in window) {
+  const activityObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.target === hero) heroVisible = entry.isIntersecting;
+        if (entry.target === strip) stripVisible = entry.isIntersecting;
+      });
+      scheduleScroll();
+    },
+    { rootMargin: "100px" },
+  );
+  if (hero) activityObserver.observe(hero);
+  if (strip) activityObserver.observe(strip);
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         }
       });
-    }, { rootMargin: "180px 0px", threshold: 0.01 });
-
-    elements.forEach((element) => {
-      const rect = element.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.96) element.classList.add("is-visible");
-      else observer.observe(element);
-    });
-
-    if (state.motionEnabled) root.classList.add("motion-ok");
-    window.addEventListener("portfolio:motionchange", (event) => {
-      root.classList.toggle("motion-ok", Boolean(event.detail));
-    });
-  });
-
-  safeFeature("scroll motion", () => {
-    const header = document.getElementById("siteHeader");
-    const hero = document.querySelector(".hero");
-    const heroLines = Array.from(document.querySelectorAll(".hero-line[data-depth]"));
-    const media = Array.from(document.querySelectorAll(".parallax-media"));
-    let elevated = false;
-
-    function resetTransforms() {
-      heroLines.forEach((line) => { line.style.transform = ""; });
-      media.forEach((image) => image.style.setProperty("--parallax-y", "0px"));
+    },
+    { threshold: 0, rootMargin: "0px 0px -24px 0px" },
+  );
+  document.querySelectorAll("[data-reveal]").forEach((element) => {
+    if (
+      !reducedMotion.matches &&
+      element.getBoundingClientRect().top >= window.innerHeight
+    ) {
+      element.classList.add("reveal-ready");
+      revealObserver.observe(element);
     }
-
-    function updateScrollEffects() {
-      state.scrollFrame = 0;
-      const scrollY = window.scrollY || 0;
-      const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      root.style.setProperty("--scroll-progress", String(clamp(0, 1, scrollY / scrollable)));
-
-      const nextElevated = scrollY > 18;
-      if (header && nextElevated !== elevated) {
-        elevated = nextElevated;
-        header.setAttribute("data-elevated", String(elevated));
-      }
-
-      if (!state.motionEnabled || !state.pointerFine || window.innerWidth < 900) {
-        resetTransforms();
-        return;
-      }
-
-      if (hero) {
-        const heroBottom = hero.offsetTop + hero.offsetHeight;
-        if (scrollY < heroBottom) {
-          heroLines.forEach((line) => {
-            const depth = Number(line.getAttribute("data-depth")) || 0;
-            const offset = -clamp(0, 66, scrollY * depth * 0.52);
-            line.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
-          });
-        }
-      }
-
-      media.forEach((image) => {
-        const frame = image.parentElement;
-        if (!frame) return;
-        const rect = frame.getBoundingClientRect();
-        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-        const imageCenter = rect.top + rect.height / 2;
-        const offset = clamp(-24, 24, (window.innerHeight / 2 - imageCenter) * 0.035);
-        image.style.setProperty("--parallax-y", `${offset.toFixed(2)}px`);
-      });
-    }
-
-    function requestScrollUpdate() {
-      if (!state.scrollFrame) state.scrollFrame = window.requestAnimationFrame(updateScrollEffects);
-    }
-
-    window.addEventListener("scroll", requestScrollUpdate, { passive: true });
-    window.addEventListener("resize", requestScrollUpdate, { passive: true });
-    window.addEventListener("portfolio:motionchange", requestScrollUpdate);
-    updateScrollEffects();
   });
+}
 
-  safeFeature("pointer depth", () => {
-    if (!state.pointerFine) return;
-    let pointerX = window.innerWidth * 0.68;
-    let pointerY = window.innerHeight * 0.18;
-
-    function updatePointer() {
-      state.pointerFrame = 0;
-      if (!state.motionEnabled) return;
-      root.style.setProperty("--pointer-x", `${((pointerX / window.innerWidth) * 100).toFixed(2)}%`);
-      root.style.setProperty("--pointer-y", `${((pointerY / window.innerHeight) * 100).toFixed(2)}%`);
-    }
-
-    window.addEventListener("pointermove", (event) => {
-      pointerX = event.clientX;
-      pointerY = event.clientY;
-      if (!state.pointerFrame) state.pointerFrame = window.requestAnimationFrame(updatePointer);
-    }, { passive: true });
-
-  });
-
-  safeFeature("active navigation", () => {
-    if (!("IntersectionObserver" in window)) return;
-    const navLinks = Array.from(document.querySelectorAll(".site-nav a[href^='#']"));
-    const sections = Array.from(document.querySelectorAll("[data-section]"));
-
-    function setActive(id) {
-      navLinks.forEach((link) => {
-        const isActive = link.getAttribute("href") === `#${id}`;
-        if (isActive) link.setAttribute("aria-current", "location");
-        else link.removeAttribute("aria-current");
-      });
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-      if (visible[0]?.target.id) setActive(visible[0].target.id);
-    }, { rootMargin: "-28% 0px -58%", threshold: [0, 0.1, 0.3] });
-
-    sections.forEach((section) => observer.observe(section));
-  });
-
-  safeFeature("case study", () => {
-    const caseStudy = document.querySelector(".case-study");
-    const steps = Array.from(document.querySelectorAll(".story-step"));
-    const captionIndex = caseStudy?.querySelector(".caption-index");
-    const captionCopy = caseStudy?.querySelector(".caption-copy");
-    if (!caseStudy || !steps.length || !("IntersectionObserver" in window)) return;
-
-    function activate(step) {
-      const stepNumber = step.getAttribute("data-step") || "1";
-      caseStudy.setAttribute("data-step", stepNumber);
-      steps.forEach((item) => item.classList.toggle("is-active", item === step));
-      if (captionIndex) captionIndex.textContent = stepNumber.padStart(2, "0");
-      if (captionCopy) captionCopy.textContent = step.getAttribute("data-caption") || "";
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      const active = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (active) activate(active.target);
-    }, { rootMargin: "-24% 0px -38%", threshold: [0.1, 0.3, 0.55] });
-
-    steps.forEach((step) => observer.observe(step));
-  });
-
-  safeFeature("visible project motion", () => {
-    if (!("IntersectionObserver" in window)) return;
-    const cards = Array.from(document.querySelectorAll(".project-card"));
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => entry.target.classList.toggle("is-onscreen", entry.isIntersecting && state.motionEnabled));
-    }, { rootMargin: "12% 0px", threshold: 0.01 });
-
-    cards.forEach((card) => observer.observe(card));
-    window.addEventListener("portfolio:motionchange", (event) => {
-      cards.forEach((card) => {
-        if (!event.detail) {
-          card.classList.remove("is-onscreen");
-          return;
-        }
-        const rect = card.getBoundingClientRect();
-        card.classList.toggle("is-onscreen", rect.bottom > 0 && rect.top < window.innerHeight);
-      });
-    });
-  });
-
-  safeFeature("approach focus", () => {
-    if (!("IntersectionObserver" in window)) return;
-    const items = Array.from(document.querySelectorAll(".approach-item"));
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => entry.target.classList.toggle("is-current", entry.isIntersecting));
-    }, { rootMargin: "-35% 0px -45%", threshold: 0.1 });
-    items.forEach((item) => observer.observe(item));
-  });
-
-  safeFeature("page visibility", () => {
-    function syncVisibility() {
-      document.body.classList.toggle("page-hidden", document.hidden);
-    }
-    document.addEventListener("visibilitychange", syncVisibility);
-    syncVisibility();
-  });
-})();
+reducedMotion.addEventListener("change", () => {
+  if (reducedMotion.matches) {
+    layers.forEach((layer) => layer.style.removeProperty("--parallax-y"));
+    drift?.style.removeProperty("--drift-x");
+    document
+      .querySelectorAll(".reveal-ready")
+      .forEach((element) => element.classList.add("is-visible"));
+  }
+  scheduleScroll();
+});
+window.addEventListener("scroll", scheduleScroll, { passive: true });
+window.addEventListener("resize", scheduleScroll, { passive: true });
+window.addEventListener("load", scheduleScroll, { once: true });
+document.addEventListener("visibilitychange", scheduleScroll);
+document.fonts?.ready.then(scheduleScroll);
+scheduleScroll();
