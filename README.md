@@ -12,7 +12,7 @@ Static, mobile-first portfolio: [schulerj89.github.io/github-page](https://schul
 
 ## Design and interactions
 
-Retro-sports typography, authentic game frames, dark/orange/lime colors, layered hero parallax, a manually scrollable console strip, and project reveals. The strip supports touch, trackpad, keyboard, and arrow buttons without automatic drift. Native browser scrolling is never intercepted. Mobile uses smaller motion distances. Reduced-motion preferences disable decorative movement; content and source links work without JavaScript. Galleries progressively enhance into an accessible native dialog.
+Retro-sports typography, authentic game frames, dark/orange/lime colors, layered hero parallax, a manually scrollable console strip, and project reveals. The strip supports touch, trackpad, and keyboard without automatic drift, buttons, visible scrollbars, or a surrounding box. Native browser scrolling is never intercepted. Mobile uses smaller motion distances. Reduced-motion preferences disable decorative movement; content and source links work without JavaScript. Galleries progressively enhance into an accessible native dialog.
 
 See [DESIGN_PLAN.md](DESIGN_PLAN.md) for rationale and [assets/SOURCES.md](assets/SOURCES.md) for image provenance. No ROMs or extracted game asset packs are hosted.
 

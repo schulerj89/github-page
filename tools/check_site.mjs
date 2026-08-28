@@ -203,6 +203,14 @@ function motionHarness({ narrow = false, reduced = false } = {}) {
   };
 }
 const normal = motionHarness();
+assert(
+  !html.includes("era-arrow") && !script.includes("data-era-direction"),
+  "No strip buttons",
+);
+assert(
+  /\.era-scroll\s*\{[^}]*scrollbar-width:\s*none/.test(css),
+  "Keep the strip visually unboxed",
+);
 normal.platformHandlers.keydown({ key: "ArrowRight", preventDefault() {} });
 assert.equal(normal.platformScroller.scrollLeft, 80, "Keyboard scrolls right");
 normal.platformHandlers.keydown({ key: "Home", preventDefault() {} });
@@ -211,26 +219,12 @@ assert.equal(
   0,
   "Home returns to the start",
 );
-assert(
-  normal.arrows[0].disabled && !normal.arrows[1].disabled,
-  "Initial scroll bounds",
-);
-normal.arrows[1].click();
+normal.platformHandlers.keydown({ key: "End", preventDefault() {} });
 assert.equal(
   normal.platformScroller.scrollLeft,
-  225,
-  "Right arrow advances the strip",
+  700,
+  "Last label remains reachable",
 );
-assert(!normal.arrows[0].disabled, "Left arrow enables after scrolling");
-normal.arrows[0].click();
-assert.equal(
-  normal.platformScroller.scrollLeft,
-  0,
-  "Left arrow returns to the start",
-);
-normal.platformScroller.scrollLeft = 700;
-normal.platformHandlers.scroll();
-assert(normal.arrows[1].disabled, "Right arrow disables at the end");
 normal.events.scroll();
 normal.events.scroll();
 assert.equal(normal.queue.length, 1, "Only one frame should be scheduled");

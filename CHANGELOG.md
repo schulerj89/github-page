@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-08-27 - v3.0.2
+
+- Restored the original clean console band: removed arrow buttons, the surrounding focus box, and visible scrollbar; restored the original vertical spacing.
+- Kept native horizontal touch/trackpad scrolling and keyboard navigation, with an underline-only keyboard focus cue.
+- Added regression checks for the button-free appearance and continued keyboard scrolling.
+- Verified clean layouts at 390px and 1024px; screenshots saved under `artifacts/platform-strip-clean-*-v3.0.2.jpg`.
+
 ## 2026-08-27 - v3.0.1
 
 - Made the console strip manually scrollable with native touch/trackpad scrolling, keyboard focus, a visible scrollbar, and 44px previous/next buttons.

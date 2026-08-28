@@ -409,24 +409,24 @@ em {
   color: var(--ink);
 }
 .era-strip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   background: var(--accent);
   color: var(--bg);
-  padding: 10px 12px;
+  padding-block: 15px;
 }
 .era-scroll {
-  flex: 1;
   overflow-x: auto;
   overscroll-behavior-x: contain;
-  scrollbar-width: thin;
-  scrollbar-color: #0b0d1070 transparent;
+  scrollbar-width: none;
 }
-.era-scroll:focus-visible,
-.era-arrow:focus-visible {
-  outline: 2px solid var(--bg);
-  outline-offset: 2px;
+.era-scroll::-webkit-scrollbar {
+  display: none;
+}
+.era-scroll:focus {
+  outline: none;
+}
+.era-scroll:focus-visible .era-track {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 .era-track {
   display: flex;
@@ -435,7 +435,7 @@ em {
   gap: 35px;
   width: max-content;
   min-width: 100%;
-  padding: 6px 12px 10px;
+  padding-inline: 20px;
   white-space: nowrap;
   font-family: var(--display);
   font-size: 34px;
@@ -444,23 +444,6 @@ em {
 }
 .era-track .era-divider {
   font-size: 24px;
-}
-.era-arrow {
-  flex: 0 0 44px;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 1px solid #0b0d1060;
-  background: transparent;
-  color: var(--bg);
-  font-size: 24px;
-}
-.era-arrow:hover:not(:disabled) {
-  background: #0b0d1015;
-}
-.era-arrow:disabled {
-  opacity: 0.3;
-  cursor: default;
 }
 .work {
   padding-block: 90px 85px;

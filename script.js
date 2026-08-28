@@ -81,34 +81,9 @@ let framePending = false;
 let heroVisible = true;
 
 // Keep the platform strip independent of page parallax so touch, trackpad,
-// keyboard, and button scrolling never fight an automatic transform.
+// and keyboard scrolling never fight an automatic transform.
 const platformScroller = document.querySelector(".era-scroll");
 if (platformScroller) {
-  const arrows = [...document.querySelectorAll("[data-era-direction]")];
-  const updateArrows = () => {
-    const end = platformScroller.scrollWidth - platformScroller.clientWidth;
-    arrows.forEach((arrow) => {
-      arrow.hidden = end <= 1;
-      arrow.disabled =
-        Number(arrow.dataset.eraDirection) < 0
-          ? platformScroller.scrollLeft <= 1
-          : platformScroller.scrollLeft >= end - 1;
-    });
-  };
-  arrows.forEach((arrow) => {
-    arrow.hidden = false;
-    arrow.addEventListener("click", () => {
-      platformScroller.scrollBy({
-        left:
-          Number(arrow.dataset.eraDirection) *
-          platformScroller.clientWidth *
-          0.75,
-        behavior: "instant",
-      });
-      updateArrows();
-    });
-  });
-  platformScroller.addEventListener("scroll", updateArrows, { passive: true });
   platformScroller.addEventListener("keydown", (event) => {
     if (event.altKey || event.ctrlKey || event.metaKey) return;
     const steps = {
@@ -120,11 +95,7 @@ if (platformScroller) {
     if (!(event.key in steps)) return;
     event.preventDefault();
     platformScroller.scrollBy({ left: steps[event.key], behavior: "instant" });
-    updateArrows();
   });
-  window.addEventListener("resize", updateArrows, { passive: true });
-  document.fonts?.ready.then(updateArrows);
-  updateArrows();
 }
 
 function renderScroll() {
