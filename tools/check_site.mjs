@@ -64,6 +64,18 @@ const imageBytes = [...files]
   .filter((f) => /\.(webp|png)$/.test(f))
   .reduce((sum, f) => sum + statSync(path.join(root, f)).size, 0);
 assert(imageBytes < 700_000, `Page imagery too heavy: ${imageBytes}`);
+assert(
+  /class="era-scroll"[^>]*tabindex="0"/.test(normalizedHtml),
+  "Platform strip must be keyboard focusable",
+);
+assert(
+  /\.era-scroll\s*\{[^}]*overflow-x:\s*auto/.test(css),
+  "Platform strip must allow native horizontal scrolling",
+);
+assert(
+  !html.includes("data-drift") && !script.includes("--drift-x"),
+  "Automatic drift must not fight manual scrolling",
+);
 
 function motionHarness({ narrow = false, reduced = false } = {}) {
   const queue = [];
@@ -83,6 +95,26 @@ function motionHarness({ narrow = false, reduced = false } = {}) {
     style: style(),
   }));
   const hero = {};
+  const platformHandlers = {};
+  const platformScroller = {
+    scrollWidth: 1000,
+    clientWidth: 300,
+    scrollLeft: 0,
+    scrollBy({ left }) {
+      this.scrollLeft = Math.min(700, Math.max(0, this.scrollLeft + left));
+    },
+    addEventListener(name, fn) {
+      platformHandlers[name] = fn;
+    },
+  };
+  const arrows = [-1, 1].map((direction) => ({
+    dataset: { eraDirection: String(direction) },
+    hidden: true,
+    disabled: false,
+    addEventListener(name, fn) {
+      this[name] = fn;
+    },
+  }));
   const strip = { getBoundingClientRect: () => ({ top: 100 }) };
   const drift = { style: style() };
   const progress = { style: {} };
@@ -102,14 +134,17 @@ function motionHarness({ narrow = false, reduced = false } = {}) {
     hidden: false,
     documentElement: { scrollHeight: 3000 },
     querySelectorAll: (selector) =>
-      selector === "[data-parallax]"
-        ? layers
-        : selector === "[data-reveal]" || selector === ".reveal-ready"
-          ? [reveal]
-          : [],
+      selector === "[data-era-direction]"
+        ? arrows
+        : selector === "[data-parallax]"
+          ? layers
+          : selector === "[data-reveal]" || selector === ".reveal-ready"
+            ? [reveal]
+            : [],
     querySelector: (selector) =>
       ({
         ".hero": hero,
+        ".era-scroll": platformScroller,
         ".era-strip": strip,
         "[data-drift]": drift,
         ".scroll-progress": progress,
@@ -149,6 +184,9 @@ function motionHarness({ narrow = false, reduced = false } = {}) {
   };
   return {
     queue,
+    platformScroller,
+    platformHandlers,
+    arrows,
     events,
     layers,
     hero,
@@ -165,6 +203,34 @@ function motionHarness({ narrow = false, reduced = false } = {}) {
   };
 }
 const normal = motionHarness();
+normal.platformHandlers.keydown({ key: "ArrowRight", preventDefault() {} });
+assert.equal(normal.platformScroller.scrollLeft, 80, "Keyboard scrolls right");
+normal.platformHandlers.keydown({ key: "Home", preventDefault() {} });
+assert.equal(
+  normal.platformScroller.scrollLeft,
+  0,
+  "Home returns to the start",
+);
+assert(
+  normal.arrows[0].disabled && !normal.arrows[1].disabled,
+  "Initial scroll bounds",
+);
+normal.arrows[1].click();
+assert.equal(
+  normal.platformScroller.scrollLeft,
+  225,
+  "Right arrow advances the strip",
+);
+assert(!normal.arrows[0].disabled, "Left arrow enables after scrolling");
+normal.arrows[0].click();
+assert.equal(
+  normal.platformScroller.scrollLeft,
+  0,
+  "Left arrow returns to the start",
+);
+normal.platformScroller.scrollLeft = 700;
+normal.platformHandlers.scroll();
+assert(normal.arrows[1].disabled, "Right arrow disables at the end");
 normal.events.scroll();
 normal.events.scroll();
 assert.equal(normal.queue.length, 1, "Only one frame should be scheduled");

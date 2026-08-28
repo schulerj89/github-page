@@ -60,7 +60,7 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=20260827" />
+    <link rel="stylesheet" href="styles.css?v=20260827-1" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -188,13 +188,46 @@
         </div>
       </section>
 
-      <div class="era-strip" aria-hidden="true">
-        <div data-drift>
-          GAME BOY <span>✳</span> NES <span>✳</span> SUPER NINTENDO
-          <span>✳</span> PLAYSTATION <span>✳</span> NATIVE CODE
-          <span>✳</span> GAME BOY <span>✳</span> NES <span>✳</span> SUPER
-          NINTENDO <span>✳</span> PLAYSTATION <span>✳</span>
+      <div class="era-strip">
+        <button
+          class="era-arrow"
+          type="button"
+          data-era-direction="-1"
+          aria-label="Scroll platforms left"
+          aria-controls="platforms"
+          hidden
+        >
+          ←
+        </button>
+        <div
+          class="era-scroll"
+          id="platforms"
+          role="region"
+          aria-label="Game platforms — scroll horizontally"
+          tabindex="0"
+        >
+          <div class="era-track">
+            <span>GAME BOY</span
+            ><span class="era-divider" aria-hidden="true">✳</span>
+            <span>NES</span
+            ><span class="era-divider" aria-hidden="true">✳</span>
+            <span>SUPER NINTENDO</span
+            ><span class="era-divider" aria-hidden="true">✳</span>
+            <span>PLAYSTATION</span
+            ><span class="era-divider" aria-hidden="true">✳</span>
+            <span>NATIVE CODE</span>
+          </div>
         </div>
+        <button
+          class="era-arrow"
+          type="button"
+          data-era-direction="1"
+          aria-label="Scroll platforms right"
+          aria-controls="platforms"
+          hidden
+        >
+          →
+        </button>
       </div>
 
       <section class="work shell" id="work" aria-labelledby="work-title">
@@ -614,6 +647,6 @@
       </div>
       <img id="dialog-image" alt="" />
     </dialog>
-    <script src="script.js?v=20260827" defer></script>
+    <script src="script.js?v=20260827-1" defer></script>
   </body>
 </html>

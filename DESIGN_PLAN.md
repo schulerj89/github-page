@@ -14,7 +14,7 @@ NBA Live 95 and NBA Live 97 lead. All-Star Challenge is complete within its docu
 
 - Native scroll; no wheel/touch interception, scroll library, video, WebGL, or perpetual animation loop.
 - One requested animation frame per scroll/resize update, limited to transforms and a progress line.
-- Offscreen hero/strip work is suspended with IntersectionObserver; hidden documents skip visual motion.
+- Offscreen hero work is suspended with IntersectionObserver; hidden documents skip visual motion. The console strip scrolls manually via touch, trackpad, keyboard, or arrow buttons; no transform competes with user input.
 - At 900px and below, projects and hero stack; parallax is reduced to 35% travel.
 - Anchor links jump directly and predictably. Reduced motion disables parallax, reveals, and transitions, including preference changes while the page is open.
 - No-JavaScript content stays visible. Galleries become plain image links. Links and primary controls have visible keyboard focus and at least 44px height.

@@ -76,12 +76,56 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const narrowViewport = window.matchMedia("(max-width: 900px)");
 const hero = document.querySelector(".hero");
 const layers = [...document.querySelectorAll("[data-parallax]")];
-const drift = document.querySelector("[data-drift]");
-const strip = document.querySelector(".era-strip");
 const progress = document.querySelector(".scroll-progress");
 let framePending = false;
 let heroVisible = true;
-let stripVisible = true;
+
+// Keep the platform strip independent of page parallax so touch, trackpad,
+// keyboard, and button scrolling never fight an automatic transform.
+const platformScroller = document.querySelector(".era-scroll");
+if (platformScroller) {
+  const arrows = [...document.querySelectorAll("[data-era-direction]")];
+  const updateArrows = () => {
+    const end = platformScroller.scrollWidth - platformScroller.clientWidth;
+    arrows.forEach((arrow) => {
+      arrow.hidden = end <= 1;
+      arrow.disabled =
+        Number(arrow.dataset.eraDirection) < 0
+          ? platformScroller.scrollLeft <= 1
+          : platformScroller.scrollLeft >= end - 1;
+    });
+  };
+  arrows.forEach((arrow) => {
+    arrow.hidden = false;
+    arrow.addEventListener("click", () => {
+      platformScroller.scrollBy({
+        left:
+          Number(arrow.dataset.eraDirection) *
+          platformScroller.clientWidth *
+          0.75,
+        behavior: "instant",
+      });
+      updateArrows();
+    });
+  });
+  platformScroller.addEventListener("scroll", updateArrows, { passive: true });
+  platformScroller.addEventListener("keydown", (event) => {
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    const steps = {
+      ArrowLeft: -80,
+      ArrowRight: 80,
+      Home: -platformScroller.scrollWidth,
+      End: platformScroller.scrollWidth,
+    };
+    if (!(event.key in steps)) return;
+    event.preventDefault();
+    platformScroller.scrollBy({ left: steps[event.key], behavior: "instant" });
+    updateArrows();
+  });
+  window.addEventListener("resize", updateArrows, { passive: true });
+  document.fonts?.ready.then(updateArrows);
+  updateArrows();
+}
 
 function renderScroll() {
   framePending = false;
@@ -100,13 +144,6 @@ function renderScroll() {
       layer.style.setProperty("--parallax-y", `${offset.toFixed(1)}px`);
     });
   }
-  if (stripVisible && drift && strip) {
-    const offset =
-      (window.innerHeight - strip.getBoundingClientRect().top) *
-      0.18 *
-      intensity;
-    drift.style.setProperty("--drift-x", `${-40 - offset}px`);
-  }
 }
 
 function scheduleScroll() {
@@ -121,14 +158,12 @@ if ("IntersectionObserver" in window) {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.target === hero) heroVisible = entry.isIntersecting;
-        if (entry.target === strip) stripVisible = entry.isIntersecting;
       });
       scheduleScroll();
     },
     { rootMargin: "100px" },
   );
   if (hero) activityObserver.observe(hero);
-  if (strip) activityObserver.observe(strip);
 
   const revealObserver = new IntersectionObserver(
     (entries) => {
@@ -155,7 +190,6 @@ if ("IntersectionObserver" in window) {
 reducedMotion.addEventListener("change", () => {
   if (reducedMotion.matches) {
     layers.forEach((layer) => layer.style.removeProperty("--parallax-y"));
-    drift?.style.removeProperty("--drift-x");
     document
       .querySelectorAll(".reveal-ready")
       .forEach((element) => element.classList.add("is-visible"));

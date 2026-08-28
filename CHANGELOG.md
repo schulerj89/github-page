@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-08-27 - v3.0.1
+
+- Made the console strip manually scrollable with native touch/trackpad scrolling, keyboard focus, a visible scrollbar, and 44px previous/next buttons.
+- Removed the strip's automatic drift and duplicate labels so all console names remain reachable. Hero parallax is unchanged.
+- Added regression checks for scrolling bounds, keyboard accessibility, and the absence of competing automatic transforms.
+- Checked 390px mobile and 1024px desktop layouts, arrow-button limits, and keyboard scrolling; screenshots are saved as `artifacts/platform-scroll-*-v3.0.1.jpg`.
+
 ## 2026-08-27 - v3.0.0
 
 - Rebuilt the site with a retro-sports visual direction: oversized condensed type, dark courtside colors, floating game screens, layered parallax, a scroll-linked console strip, and project reveals.
